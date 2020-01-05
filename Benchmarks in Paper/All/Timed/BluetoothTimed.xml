@@ -124,7 +124,7 @@
 		<transition>
 			<source ref="id28"/>
 			<target ref="id28"/>
-			<label kind="synchronisation" x="-611" y="514">pop,s1,add,pop&gt;=0</label>
+			<label kind="synchronisation" x="-611" y="514">pop,s1,add,pop&gt;=1</label>
 			<nail x="-569" y="612"/>
 			<nail x="-527" y="544"/>
 			<nail x="-527" y="544"/>

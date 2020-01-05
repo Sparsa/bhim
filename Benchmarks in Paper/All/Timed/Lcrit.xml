@@ -79,15 +79,6 @@
 			<label kind="synchronisation" x="-271" y="-17">push,s2,s</label>
 		</transition>
 		<transition>
-			<source ref="id4"/>
-			<target ref="id4"/>
-			<label kind="select" x="-365" y="-178">t2</label>
-			<label kind="synchronisation" x="-374" y="-153">push,s1,a</label>
-			<nail x="-459" y="-136"/>
-			<nail x="-314" y="-229"/>
-			<nail x="-238" y="-136"/>
-		</transition>
-		<transition>
 			<source ref="id5"/>
 			<target ref="id4"/>
 			<label kind="select" x="-534" y="-51">t1</label>
