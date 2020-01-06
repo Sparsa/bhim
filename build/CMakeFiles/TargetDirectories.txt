@@ -1,3 +1,0 @@
-/home/sparsa/Projects/bhim/build/CMakeFiles/rebuild_cache.dir
-/home/sparsa/Projects/bhim/build/CMakeFiles/bhim.dir
-/home/sparsa/Projects/bhim/build/CMakeFiles/edit_cache.dir

@@ -18,27 +18,29 @@ The compilation can be done following the instructions below,
     $ cd build
 3. Then use cmake to compile BHIM by using the following command:
     $ cmake .. 
-4. This command will produce an executable binary named "bhim" under the build directory.
+4. Then execute make to compile 
+    $ make
+5. This command will produce an executable binary named "bhim" under the build directory.
 
 
 # RUNNING BHIM:
 
 The benchmark examples published in the paper are stored in the directory called "Benchmarks in Paper." The benchmarks are of two types, Timed and unTimed. They are stored under two separate directories under "Benchmarks in Paper" directory named "Timed" and "unTimed" respectively. 
 
-BHIM takes command line argument parameters as follows
+BHIM can be executed as follows:
 
 $ cd PATH_TO_BHIM_BINARY
 $ ./bhim -h HOLE_BOUND -x INPUT_FILE
 
-The command line parameter HOLE_BOUND is the maximum hole bound allowed, and the INPUT_FILE is the path to the Multistack Pushdown Automata(timed or Untimed) for which we want to check emptiness. The input format is UPPAAL compatible, i.e., the Multistack Pushdown Automata is drawn in UPPAL and saved as a .xml file. Note that UPPAAL can not handle stack operations; hence we use the synchronization parameters in UPPAAL to denote stack operations. 
+The command line parameter "-h HOLE_BOUND" is the maximum hole bound allowed, and the "-x INPUT_FILE" is the path to the Multistack Pushdown Automata (timed or un-timed) for which we want to check emptiness/reachability. Both of the parameters are required. The input format is UPPAAL compatible, i.e., the Multistack Pushdown Automata is drawn in UPPAAL and saved as a ".xml" file. Note that UPPAAL can not handle stack operations; hence we use the synchronization parameters of UPPAAL to denote stack operations. 
 
 # GENERATING TABLES:
-To quickly reproduce the results in the paper, we created a directory named "All" under the "Benchmarks in Paper" directory. Under this directory, you will find two folders for "timed" and "untimed" benchmarks. Each such directory contains a shell script named "GenerateTable.sh."
-You can run the shell script as follows:
+To quickly reproduce the results in the paper, we created a directory named "All" under the "Benchmarks in Paper" directory. Under this directory, we created two folders for "timed" and "untimed" benchmarks. Each such directory contains a shell script named "GenerateTable.sh." The shell script assumes the existence of "build" directory and "bhim" executable inside it. So before running the scripts make sure that the "build" directory exists and "bhim" executable built following the "BUILD BHIM" section.
+
+You can run the shell script from the directory (e.g. /bhim/Benchmarks in Paper/All/timed) as follows:
     $ sh GenerateTable.sh
 this should produce the table for untimed and timed experiments, respectively.
 
-P.S: Note that the directory should contain  "bhim" executable along with the benchmark examples.
 
 # Configuration of the Host machine
 CPU: Intel i7-4770K (8) @ 3.900GHz

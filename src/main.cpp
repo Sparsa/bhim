@@ -31,12 +31,17 @@ struct rusage usage;
 int ret;
 bool repeated;
 inline int  max(int a,int b);
+void bhim_usage(){
+  cout << "bhim -h HOLE_BOUND -x INPUT_FILE" <<endl;
+  cout <<"Please use -h and -x options to specify hole bound and input files respectively" << endl;
+}
 //bool isEmpty(const Automata& a); // takes an automata object and returns true if it is empty .
 //bool isEmpty(const Concatenation& c, const Automata& a) ;// for timed system we need to work on the concatenation class.
 int main(int argc, char** argv) {
     
     char choice;
     char* filename;
+    short count = 0;
     int option,hole_bound;
   while ((choice = getopt (argc, argv, "x:b:c:h:")) != -1)
     switch (choice)
@@ -44,16 +49,20 @@ int main(int argc, char** argv) {
       case 'b':
         option = 1;
         filename = optarg;
+        count++;
         break;
       case 'c':
         option = 2;
         filename = optarg;
+        count++;
         break;
       case 'x':
         option=3;
         filename = optarg;
+        count++;
         break;
         case 'h' :
+        count++;
         hole_bound = atoi(optarg);
         break;
       case '?':
@@ -67,16 +76,18 @@ int main(int argc, char** argv) {
                    optopt);
         return 1;
       default:
-        abort ();
+        return 0;
       }
 
     if(argc < 2) {
         cout << "Input TPDA file must be given !" << endl;
+        bhim_usage();
         return 0;
     }
-    if(argc < 3) {
-        cout <<"The bound on the context switch is not given" << endl;
-        cout <<"We will assume no limits on context switch" << endl;
+    //cout << count << endl;
+    if(count <2){
+      bhim_usage();
+      return 0;
     }
     clock_t start = clock(); // Start measuring time
     
