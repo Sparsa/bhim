@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
+<nta>
+	<declaration>// Place global declarations here.</declaration>
+	<template>
+		<name x="5" y="5">Template</name>
+		<declaration>// Place local declarations here.</declaration>
+		<location id="id0" x="-42" y="187">
+		</location>
+		<location id="id1" x="518" y="0">
+		</location>
+		<location id="id2" x="246" y="0">
+		</location>
+		<location id="id3" x="-42" y="0">
+		</location>
+		<location id="id4" x="-289" y="0">
+		</location>
+		<location id="id5" x="-552" y="0">
+		</location>
+		<init ref="id5"/>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id4"/>
+			<label kind="select" x="-339" y="-110">t2</label>
+			<label kind="synchronisation" x="-339" y="-76">push,s1,a</label>
+			<nail x="-357" y="-119"/>
+			<nail x="-297" y="-195"/>
+			<nail x="-212" y="-93"/>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id2"/>
+			<label kind="select" x="119" y="178">t10</label>
+			<label kind="guard" x="42" y="144">y==0&amp;&amp;z==0&amp;&amp;m==0&amp;&amp;n==0&amp;&amp;p==0&amp;&amp;j==0</label>
+			<label kind="synchronisation" x="85" y="204">pop,s1,s,pop == 2</label>
+			<nail x="221" y="136"/>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id0"/>
+			<label kind="select" x="-314" y="110">t9</label>
+			<label kind="synchronisation" x="-442" y="127">pop,s1,a,pop&lt;=2&amp;&amp;pop&gt;=0</label>
+			<nail x="-127" y="119"/>
+			<nail x="-212" y="85"/>
+			<nail x="-221" y="144"/>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id0"/>
+			<label kind="select" x="-42" y="42">t8</label>
+			<label kind="guard" x="-42" y="59">x&gt;=1</label>
+			<label kind="synchronisation" x="-42" y="76">pop,s1,a,pop&gt;=0</label>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id1"/>
+			<label kind="select" x="314" y="-42">t7</label>
+			<label kind="synchronisation" x="280" y="-25">pop,s2,s,pop==7</label>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id2"/>
+			<label kind="select" x="196" y="-110">t6</label>
+			<label kind="synchronisation" x="196" y="-76">pop,s2,b,pop&gt;=0</label>
+			<nail x="178" y="-119"/>
+			<nail x="255" y="-195"/>
+			<nail x="323" y="-93"/>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id3"/>
+			<label kind="select" x="-76" y="-170">t4</label>
+			<label kind="synchronisation" x="-85" y="-144">push,s2,b</label>
+			<nail x="-136" y="-170"/>
+			<nail x="-68" y="-212"/>
+			<nail x="68" y="-187"/>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id2"/>
+			<label kind="select" x="68" y="-59">t5</label>
+			<label kind="synchronisation" x="17" y="-25">pop,s1,s,pop==2</label>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id3"/>
+			<label kind="select" x="-187" y="-42">t3</label>
+			<label kind="synchronisation" x="-271" y="-17">push,s2,s</label>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id4"/>
+			<label kind="select" x="-534" y="-51">t1</label>
+			<label kind="synchronisation" x="-534" y="-17">push,s1,s</label>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+Process = Template();
+// List one or more processes to be composed into a system.
+system Process;
+    </system>
+	<queries>
+	</queries>
+</nta>
