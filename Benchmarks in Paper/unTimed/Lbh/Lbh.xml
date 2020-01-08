@@ -12,6 +12,7 @@
 		<location id="id2" x="119" y="-178">
 		</location>
 		<location id="id3" x="-8" y="-187">
+			<name x="-18" y="-221">end</name>
 		</location>
 		<location id="id4" x="-178" y="-144">
 		</location>
@@ -24,7 +25,7 @@
 			<source ref="id0"/>
 			<target ref="id0"/>
 			<label kind="select" x="25" y="59">t11</label>
-			<label kind="guard" x="25" y="76">pop,s2,m,pop&gt;=0</label>
+			<label kind="synchronisation" x="26" y="33">pop,s2,m,pop&gt;=0</label>
 			<nail x="85" y="59"/>
 			<nail x="17" y="127"/>
 		</transition>

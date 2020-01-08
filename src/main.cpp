@@ -206,8 +206,8 @@ int main(int argc, char** argv) {
     cout << "######### Corresponding Table Row ########## " << endl;
 
     if(a.list_of_clocks.size() == 0 && a.maximum_stack_constant <= 1){
-      cout << "|" << setw(25)<< "Filename" << "|" << setw(10) << "#States" << "|"<<setw(12) << "#Transitions" << "|"<<setw(10)  << "#Stacks" << "|"<<setw(10) << "Hole Bound" << "|"<<setw(10) << "Total Time" <<"|"<<setw(12) << "Witness Time" << "|" <<setw(10) << "Memory(KB)" <<"|"<<setw(10) << "Empty?" << endl;
-    cout << "|" << setw(25)<< filename << "|" << setw(10) << a.number_of_states << "|"<<setw(12) << a.number_of_transitions << "|"<<setw(10)  << a.number_of_stacks << "|"<<setw(10) << hole_bound << "|"<<setw(10) << elapsed <<"|"<<setw(12) << c.witness_time << "|" <<setw(10) <<usage.ru_maxrss << "KB" <<"|"<<setw(10) << is_empty_mpda<< endl;
+      cout << "|" << setw(50)<< "Filename" << "|" << setw(10) << "#States" << "|"<<setw(12) << "#Transitions" << "|"<<setw(10)  << "#Stacks" << "|"<<setw(10) << "Hole Bound" << "|"<<setw(10) << "Total Time" <<"|"<<setw(12) << "Witness Time" << "|" <<setw(10) << "Memory(KB)" <<"|"<<setw(10) << "Empty?" << endl;
+    cout << "|" << setw(50)<< filename << "|" << setw(10) << a.number_of_states << "|"<<setw(12) << a.number_of_transitions << "|"<<setw(10)  << a.number_of_stacks << "|"<<setw(10) << hole_bound << "|"<<setw(10) << elapsed <<"|"<<setw(12) << c.witness_time << "|" <<setw(10) <<usage.ru_maxrss << "KB" <<"|"<<setw(10) << is_empty_mpda<< endl;
     }
     else{
       string aged;
@@ -217,8 +217,8 @@ int main(int argc, char** argv) {
       else{
         aged="No";
       }
-    cout << "|" << setw(25)<< "Filename" << "|" << setw(10) << "#States" << "|"<<setw(12) << "#Transitions" << "|"<<setw(10)  << "#Stacks" << "|"<<setw(10) << "clocks"<< "|"<<setw(10) << "Cmax"<< "|"<<setw(10) << "Aged?"<< "|"<<setw(10) << "Hole Bound" << "|"<<setw(10) << "Total Time" <<"|"<<setw(12) << "Witness Time" << "|" <<setw(10) << "Memory(KB)" <<"|"<<setw(10) << "Empty?" << endl;
-    cout << "|" << setw(25)<< filename << "|" << setw(10) << a.number_of_states << "|"<<setw(12) << a.number_of_transitions << "|"<<setw(10)  << a.number_of_stacks << "|"<<setw(10) << a.list_of_clocks.size() << "|"<<setw(10) << a.max_const << "|"<<setw(10) << aged << "|"<<setw(10) << hole_bound << "|"<<setw(10) << elapsed <<"|"<<setw(12) << c.witness_time << "|" <<setw(10) <<usage.ru_maxrss << "KB" <<"|"<<setw(10) << is_empty_mpda << endl;
+    cout << "|" << setw(50)<< "Filename" << "|" << setw(10) << "#States" << "|"<<setw(12) << "#Transitions" << "|"<<setw(10)  << "#Stacks" << "|"<<setw(10) << "clocks"<< "|"<<setw(10) << "Cmax"<< "|"<<setw(10) << "Aged?"<< "|"<<setw(10) << "Hole Bound" << "|"<<setw(10) << "Total Time" <<"|"<<setw(12) << "Witness Time" << "|" <<setw(10) << "Memory(KB)" <<"|"<<setw(10) << "Empty?" << endl;
+    cout << "|" << setw(50)<< filename << "|" << setw(10) << a.number_of_states << "|"<<setw(12) << a.number_of_transitions << "|"<<setw(10)  << a.number_of_stacks << "|"<<setw(10) << a.list_of_clocks.size() << "|"<<setw(10) << a.max_const << "|"<<setw(10) << aged << "|"<<setw(10) << hole_bound << "|"<<setw(10) << elapsed <<"|"<<setw(12) << c.witness_time << "|" <<setw(10) <<usage.ru_maxrss << "KB" <<"|"<<setw(10) << is_empty_mpda << endl;
     }
     return 0;
     
