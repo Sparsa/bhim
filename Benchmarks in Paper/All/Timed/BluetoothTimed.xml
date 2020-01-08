@@ -442,7 +442,7 @@
 		<transition>
 			<source ref="id11"/>
 			<target ref="id10"/>
-			<label kind="synchronisation" x="-425" y="-391">pop,s1,inr,pop&gt;=4</label>
+			<label kind="synchronisation" x="-425" y="-391">pop,s1,inr,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id12"/>

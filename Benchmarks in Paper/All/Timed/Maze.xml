@@ -57,7 +57,7 @@
 			<target ref="id8"/>
 			<label kind="select" x="-280" y="-204">t16</label>
 			<label kind="guard" x="-289" y="-170">x&gt;=0</label>
-			<label kind="synchronisation" x="-322" y="-212">pop,s1,a,pop&gt;=8</label>
+			<label kind="synchronisation" x="-322" y="-212">pop,s1,a,pop&gt;=4</label>
 			<label kind="assignment" x="-297" y="-144">x=0</label>
 		</transition>
 		<transition>

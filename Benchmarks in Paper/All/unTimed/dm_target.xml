@@ -19,25 +19,83 @@
 		</location>
 		<location id="id5" x="-348" y="25">
 		</location>
-		<location id="id6" x="195" y="-34">
+		<location id="id6" x="229" y="-136">
 		</location>
-		<location id="id7" x="229" y="-136">
+		<location id="id7" x="102" y="-212">
 		</location>
-		<location id="id8" x="102" y="-212">
+		<location id="id8" x="-76" y="-212">
 		</location>
-		<location id="id9" x="-76" y="-212">
+		<location id="id9" x="-229" y="-212">
 		</location>
-		<location id="id10" x="-229" y="-212">
+		<location id="id10" x="-357" y="-212">
 		</location>
-		<location id="id11" x="-357" y="-212">
+		<location id="id11" x="-493" y="-212">
 		</location>
-		<location id="id12" x="-493" y="-212">
+		<location id="id12" x="-603" y="-203">
 		</location>
-		<location id="id13" x="-603" y="-203">
-		</location>
-		<init ref="id13"/>
+		<init ref="id12"/>
 		<transition>
 			<source ref="id11"/>
+			<target ref="id11"/>
+			<nail x="-518" y="-153"/>
+			<nail x="-450" y="-136"/>
+			<nail x="-484" y="-204"/>
+		</transition>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id9"/>
+			<nail x="-255" y="-110"/>
+			<nail x="-144" y="-119"/>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id4"/>
+			<nail x="-110" y="-76"/>
+			<nail x="-17" y="-42"/>
+			<nail x="-42" y="17"/>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id3"/>
+			<nail x="-408" y="161"/>
+			<nail x="-399" y="127"/>
+		</transition>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id1"/>
+			<nail x="-85" y="102"/>
+			<nail x="8" y="42"/>
+			<nail x="59" y="93"/>
+		</transition>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id8"/>
+			<nail x="-119" y="-229"/>
+			<nail x="-76" y="-323"/>
+			<nail x="8" y="-272"/>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id6"/>
+			<nail x="272" y="-195"/>
+			<nail x="314" y="-144"/>
+			<nail x="272" y="-110"/>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id7"/>
+			<nail x="51" y="-263"/>
+			<nail x="110" y="-306"/>
+			<nail x="161" y="-255"/>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id10"/>
+			<label kind="select" x="-339" y="-225">start_again</label>
+			<label kind="synchronisation" x="-34" y="-136">push,s2,a</label>
+		</transition>
+		<transition>
+			<source ref="id10"/>
 			<target ref="id5"/>
 			<label kind="select" x="-352" y="-144">time_lapse</label>
 		</transition>
@@ -56,16 +114,11 @@
 			<nail x="-195" y="101"/>
 		</transition>
 		<transition>
-			<source ref="id10"/>
-			<target ref="id11"/>
+			<source ref="id9"/>
+			<target ref="id10"/>
 			<label kind="select" x="-330" y="-428">not_exist</label>
 			<nail x="-238" y="-356"/>
 			<nail x="-348" y="-399"/>
-		</transition>
-		<transition>
-			<source ref="id6"/>
-			<target ref="id11"/>
-			<label kind="select" x="-144" y="-110">start_again</label>
 		</transition>
 		<transition>
 			<source ref="id2"/>
@@ -130,40 +183,34 @@
 		<transition>
 			<source ref="id7"/>
 			<target ref="id6"/>
-			<label kind="select" x="280" y="-93">(6)</label>
-			<label kind="synchronisation" x="212" y="-102">push,s2,a</label>
+			<label kind="select" x="119" y="-195">set_flag</label>
 		</transition>
 		<transition>
 			<source ref="id8"/>
 			<target ref="id7"/>
-			<label kind="select" x="119" y="-195">set_flag</label>
-		</transition>
-		<transition>
-			<source ref="id9"/>
-			<target ref="id8"/>
 			<label kind="select" x="-58" y="-263">(5)</label>
 			<label kind="synchronisation" x="-58" y="-229">push,s2,a</label>
 		</transition>
 		<transition>
+			<source ref="id9"/>
+			<target ref="id8"/>
+			<label kind="select" x="-211" y="-263">exist</label>
+		</transition>
+		<transition>
 			<source ref="id10"/>
 			<target ref="id9"/>
-			<label kind="select" x="-211" y="-263">exist</label>
+			<label kind="select" x="-339" y="-263">(3)</label>
+			<label kind="synchronisation" x="-119" y="-136">push,s1,a</label>
 		</transition>
 		<transition>
 			<source ref="id11"/>
 			<target ref="id10"/>
-			<label kind="select" x="-339" y="-263">(3)</label>
-			<label kind="synchronisation" x="-339" y="-229">push,s1,a</label>
-		</transition>
-		<transition>
-			<source ref="id12"/>
-			<target ref="id11"/>
 			<label kind="select" x="-475" y="-263">(2)</label>
 			<label kind="synchronisation" x="-475" y="-229">push,s2,#</label>
 		</transition>
 		<transition>
-			<source ref="id13"/>
-			<target ref="id12"/>
+			<source ref="id12"/>
+			<target ref="id11"/>
 			<label kind="select" x="-585" y="-258">(1)</label>
 			<label kind="synchronisation" x="-585" y="-224">push,s1,#</label>
 		</transition>

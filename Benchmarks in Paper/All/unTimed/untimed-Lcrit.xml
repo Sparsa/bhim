@@ -20,6 +20,15 @@
 		</location>
 		<init ref="id5"/>
 		<transition>
+			<source ref="id4"/>
+			<target ref="id4"/>
+			<label kind="select" x="-364" y="-85">t2</label>
+			<label kind="synchronisation" x="-364" y="-51">push,s1,a</label>
+			<nail x="-382" y="-68"/>
+			<nail x="-331" y="-161"/>
+			<nail x="-229" y="-119"/>
+		</transition>
+		<transition>
 			<source ref="id0"/>
 			<target ref="id2"/>
 			<label kind="select" x="119" y="178">t10</label>
