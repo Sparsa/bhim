@@ -68,6 +68,17 @@ You can run the shell script from the directory (e.g. ${EXTRACTED_DIR}/bhim/Benc
     $ sh GenerateTable.sh
 this should produce the table for untimed and timed experiments, respectively.
 
+# Parameterized Examples
+
+We also run some experiments to check scalability of "BHIM"
+These experiments are part of the Appendix of the submission. We used the examples 
+"Lcrit (timed)" and "Lbh" to run "BHIM" varying different parameters like "holes",
+"clocks", "Maximum constraint" and "state-transitions". The benchmarks are in the
+directory named "Appendix" which contains folders for each parameters and benchmarks.
+And each folder contains file/files and a script "run.sh". "run.sh" will run the examples with varying parameters and will generate the tables. 
+
+P.S: Some examples can take time to run so it will take some time to generate the whole 
+table.
 
 # Configuration of the Host machine
 CPU: Intel i7-4770K (8) @ 3.900GHz
