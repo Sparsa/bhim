@@ -18,7 +18,7 @@
 #include<unordered_map>
 #include<iomanip>
 #include<automata.h>
-
+#include"boost/algorithm/string.hpp"
 #include<sys/resource.h>
 
 //#include"dtimedPartStack.h"
@@ -199,15 +199,15 @@ int main(int argc, char** argv) {
     cout << "Execution time : " << elapsed << " mili seconds." << endl << endl;
     cout << "Witness Generation time : " << c.witness_time << " mili seconds." << endl << endl;
     
-    
-    
+    vector<string>  results;
+    boost::split(results,filename,[](char c){return c == '/';});
     ret = getrusage(who,&usage);
     cout <<"Maximum Memory used is : " << usage.ru_maxrss << "KB" << endl;
     cout << "######### Corresponding Table Row ########## " << endl;
 
     if(a.list_of_clocks.size() == 0 && a.maximum_stack_constant <= 1){
       cout << "|" << setw(50)<< "Filename" << "|" << setw(10) << "#States" << "|"<<setw(12) << "#Transitions" << "|"<<setw(10)  << "#Stacks" << "|"<<setw(10) << "Hole Bound" << "|"<<setw(10) << "Total Time" <<"|"<<setw(12) << "Witness Time" << "|" <<setw(10) << "Memory(KB)" <<"|"<<setw(10) << "Empty?" << endl;
-    cout << "|" << setw(50)<< filename << "|" << setw(10) << a.number_of_states << "|"<<setw(12) << a.number_of_transitions << "|"<<setw(10)  << a.number_of_stacks << "|"<<setw(10) << hole_bound << "|"<<setw(10) << elapsed <<"|"<<setw(12) << c.witness_time << "|" <<setw(10) <<usage.ru_maxrss << "KB" <<"|"<<setw(10) << is_empty_mpda<< endl;
+    cout << "|" << setw(50)<< results[results.size()-1] << "|" << setw(10) << a.number_of_states << "|"<<setw(12) << a.number_of_transitions << "|"<<setw(10)  << a.number_of_stacks << "|"<<setw(10) << hole_bound << "|"<<setw(10) << elapsed <<"|"<<setw(12) << c.witness_time << "|" <<setw(10) <<usage.ru_maxrss << "KB" <<"|"<<setw(10) << is_empty_mpda<< endl;
     }
     else{
       string aged;
@@ -218,7 +218,7 @@ int main(int argc, char** argv) {
         aged="No";
       }
     cout << "|" << setw(50)<< "Filename" << "|" << setw(10) << "#States" << "|"<<setw(12) << "#Transitions" << "|"<<setw(10)  << "#Stacks" << "|"<<setw(10) << "clocks"<< "|"<<setw(10) << "Cmax"<< "|"<<setw(10) << "Aged?"<< "|"<<setw(10) << "Hole Bound" << "|"<<setw(10) << "Total Time" <<"|"<<setw(12) << "Witness Time" << "|" <<setw(10) << "Memory(KB)" <<"|"<<setw(10) << "Empty?" << endl;
-    cout << "|" << setw(50)<< filename << "|" << setw(10) << a.number_of_states << "|"<<setw(12) << a.number_of_transitions << "|"<<setw(10)  << a.number_of_stacks << "|"<<setw(10) << a.list_of_clocks.size() << "|"<<setw(10) << a.max_const << "|"<<setw(10) << aged << "|"<<setw(10) << hole_bound << "|"<<setw(10) << elapsed <<"|"<<setw(12) << c.witness_time << "|" <<setw(10) <<usage.ru_maxrss << "KB" <<"|"<<setw(10) << is_empty_mpda << endl;
+    cout << "|" << setw(50)<< results[results.size()-1]<< "|" << setw(10) << a.number_of_states << "|"<<setw(12) << a.number_of_transitions << "|"<<setw(10)  << a.number_of_stacks << "|"<<setw(10) << a.list_of_clocks.size() << "|"<<setw(10) << a.max_const << "|"<<setw(10) << aged << "|"<<setw(10) << hole_bound << "|"<<setw(10) << elapsed <<"|"<<setw(12) << c.witness_time << "|" <<setw(10) <<usage.ru_maxrss << "KB" <<"|"<<setw(10) << is_empty_mpda << endl;
     }
     return 0;
     
