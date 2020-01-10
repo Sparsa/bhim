@@ -1,29 +1,29 @@
 The folder contains the source code of the tool BHIM. The program is written in C++ programming language. 
 The project is compiled using CMake version 3.10, which is available in the virtual machine provided 
 for TACAS'20 artifact evaluation. The libraries used in the tool are (i) boost and (ii) tinyxml, 
-and they are bundled with the source code provided with the bhim package.
+and they are bundled with the source code provided with the "BHIM" package.
 
 # Structure of The code
 
 The "bhim" directory contains the following folders, 
 1) Benchmark in Paper: This includes the benchmarks and scripts to reproduce the tables in the paper.
-2) src: This folder contains the *.cpp files.
-3) include: This folder contains the header files used in bhim.
+2) src: This folder contains the "*.cpp" files.
+3) include: This folder contains the header files used in "BHIM".
 
 
-The compilation can be done following the instructions below,
+To compile and build the tool follow the instructions below,
 
 # BUILDING BHIM:
 
 1. make sure the extracted folder contains an "include" folder with header files of the tool, 
 an "src" folder which contains the source files of the tool, and a "CMakeLists.txt" file,
-which will be used by CMake to build the tool.
+which will be used by "CMake" to build the tool.
 2. Make a directory named build  and change directory into it following the command:
     $ mkdir build
     $ cd build
-3. Then use cmake to compile BHIM by using the following command:
+3. Then use "Cmake" to compile BHIM by using the following command:
     $ cmake .. 
-4. Then execute make to compile 
+4. Then execute "make" to compile 
     $ make
 5. This command will produce an executable binary named "bhim" under the build directory.
 
@@ -31,7 +31,7 @@ which will be used by CMake to build the tool.
 # RUNNING BHIM:
 
 The benchmark examples published in the paper are stored in the directory called "Benchmarks in Paper". 
-The benchmarks are of two types, Timed and unTimed. They are stored under two separate directories under 
+The benchmarks are of two types, "Timed" and "unTimed". They can be found under two separate directories under 
 "Benchmarks in Paper" directory named "Timed" and "unTimed" respectively. 
 
 BHIM can be executed as follows:
@@ -58,29 +58,32 @@ as follows,
     $ sh run.sh
 
     
-P.S Make sure you have built bhim following the instructions above and the executable "bhim" is there in the "build" directory.
+P.S Make sure to build "BHIM" following the instructions above, and the executable "bhim" is there in the "build" directory.
 
 
 # GENERATING TABLES:
-To quickly reproduce the results in the paper, we created a shell script under "timed" and "untimed" directories named "GenerateTable.sh". The shell script assumes the existence of "build" directory and "bhim" executable inside it. So before running the scripts make sure that the "build" directory exists and "bhim" executable built following the "BUILD BHIM" section.
+To quickly reproduce the results in the paper, we created a shell script under "Timed" and "unTimed" directories 
+named "GenerateTable.sh". The shell script assumes the existence of "build" directory and "bhim" executable inside
+it. So before running the scripts, make sure that the "build" directory exists and contains the "bhim" executable.
 
-You can run the shell script from the directory (e.g. ${EXTRACTED_DIR}/bhim/Benchmarks in Paper/Timed or ${EXTRACTED_DIR}/bhim/Benchmarks in Paper/unTimed) as follows:
+You can run the shell script from the directory (e.g. ${EXTRACTED_DIR}/bhim/Benchmarks in Paper/Timed or 
+${EXTRACTED_DIR}/bhim/Benchmarks in Paper/unTimed) as follows:
     $ sh GenerateTable.sh
-this should produce the table for untimed and timed experiments, respectively.
+this sequence of commands should produce the table for untimed and timed experiments, respectively.
 
 # Parameterized Examples
 
-We also run some experiments to check scalability of "BHIM"
+We also run some experiments to check the scalability of "BHIM"
 These experiments are part of the Appendix of the submission. We used the examples 
 "Lcrit (timed)" and "Lbh" to run "BHIM" varying different parameters like "holes",
 "clocks", "Maximum constraint" and "state-transitions". The benchmarks are in the
 directory named "Appendix" which contains folders for each parameters and benchmarks.
-And each folder contains file/files and a script "run.sh". "run.sh" will run the examples with varying parameters and will generate the tables. 
+Furthermore, each folder contains benchmark file/files and a script "run.sh". The file 
+"run.sh" will run the examples with varying parameters and will generate the tables. 
 
-P.S: Some examples can take time to run so it will take some time to generate the whole 
+P.S: Some examples can take time to run, so it will take some time to generate the whole 
 table.
 
 # Configuration of the Host machine
 CPU: Intel i7-4770K (8) @ 3.900GHz
 RAM: 16GB
-
