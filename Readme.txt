@@ -88,7 +88,7 @@ For example, if you want to check the performance of "BHIM" with changing holes,
 "Appendix" directory under "Benchmarks in Paper" directory, there you will find directories named "<example_name>_change_hole"
 This directory contains an example file and a "run.sh" file, the "run.sh" runs the example with hole varied from 2 to 5. You can
 easily change the limit to test "BHIM" but, the execution time will also increase accordingly. The current values are given to 
-make sure every experiments run within minium time.
+make sure every experiments run within minimum time.
 
 Output:
 |                                          Filename|   #States|#Transitions|   #Stacks|Hole Bound|Total Time|Witness Time|Memory(KB)|    Empty?
@@ -101,4 +101,4 @@ Output:
 # Configuration of the Host machine
 CPU: Intel i7-4770K (8) @ 3.900GHz
 RAM: 16GB
-Time required to generate the whole table: 
+Time required to generate the whole table: 154688.315 mili sec
