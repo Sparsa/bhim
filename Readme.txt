@@ -41,7 +41,7 @@ $ ./bhim -h HOLE_BOUND -x INPUT_FILE
 
 The command line parameter "-h HOLE_BOUND" is the maximum hole bound allowed, 
 and the "-x INPUT_FILE" is the path to the Multistack Pushdown Automata (timed or un-timed) for which 
-we want to check emptiness/reachability. Both of the parameters are required. The input format is UPPAAL
+we want to check emptiness/reachability. Both of the parameters are required. The input format is UPPAAL<http://uppaal.org/>
 compatible, i.e., the Multistack Pushdown Automata is drawn in UPPAAL and saved as a ".xml" file. Note that,
 UPPAAL can not handle stack operations; hence we use the synchronization parameters of UPPAAL to denote
 stack operations. 
@@ -84,6 +84,21 @@ Furthermore, each folder contains benchmark file/files and a script "run.sh". Th
 P.S: Some examples can take time to run, so it will take some time to generate the whole 
 table.
 
+For example, if you want to check the performance of "BHIM" with changing holes, then you should go to 
+"Appendix" directory under "Benchmarks in Paper" directory, there you will find directories named "<example_name>_change_hole"
+This directory contains an example file and a "run.sh" file, the "run.sh" runs the example with hole varied from 2 to 5. You can
+easily change the limit to test "BHIM" but, the execution time will also increase accordingly. The current values are given to 
+make sure every experiments run within minium time.
+
+Output:
+|                                          Filename|   #States|#Transitions|   #Stacks|Hole Bound|Total Time|Witness Time|Memory(KB)|    Empty?
+|                                           Lbh.xml|         7|          13|         2|         2|   137.475|           0|      6516KB|       Yes
+|                                           Lbh.xml|         7|          13|         2|         3|   2022.64|           0|     49244KB|       Yes
+|                                           Lbh.xml|         7|          13|         2|         4|   19722.2|           0|    444024KB|       Yes
+|                                           Lbh.xml|         7|          13|         2|         5|    132806|           0|   2296784KB|       Yes
+
+
 # Configuration of the Host machine
 CPU: Intel i7-4770K (8) @ 3.900GHz
 RAM: 16GB
+Time required to generate the whole table: 
