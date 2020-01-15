@@ -1,0 +1,18 @@
+digraph finite_state_machine {
+	node [shape = point ]; qi0;
+	node [shape = doublecircle];3;
+	node [shape=circle];
+	qi0 -> 2;
+	1 -> 4 [ label = "{t15}" ];
+	4 -> 1 [ label = "{t14,pop stack 1,0<=ag(1)<inf}" ];
+	2 -> 9 [ label = "{t1,push 2 stack 2}" ];
+	9 -> 3 [ label = "{t19}" ];
+	4 -> 9 [ label = "{t16,pop stack 2,0<=ag(2)<inf}" ];
+	8 -> 6 [ label = "{t6}" ];
+	6 -> 4 [ label = "{t11}" ];
+	5 -> 6 [ label = "{t10,push 1 stack 1}" ];
+	6 -> 5 [ label = "{t9,pop stack 2,0<=ag(1)<inf}" ];
+	7 -> 8 [ label = "{t5}" ];
+	8 -> 7 [ label = "{t4,push 1 stack 2}" ];
+	9 -> 8 [ label = "{t2}" ];
+}

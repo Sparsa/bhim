@@ -1,0 +1,24 @@
+digraph finite_state_machine {
+	node [shape = point ]; qi0;
+	node [shape = doublecircle];4;
+	node [shape=circle];
+	qi0 -> 11;
+	9 -> 2 [ label = "{t17}" ];
+	9 -> 3 [ label = "{t15}" ];
+	2 -> 9 [ label = "{t18}" ];
+	3 -> 2 [ label = "{t16}" ];
+	1 -> 3 [ label = "{t14}" ];
+	9 -> 1 [ label = "{t13}" ];
+	4 -> 4 [ label = "{t12,pop stack 1,0<=ag(1)<inf}" ];
+	4 -> 4 [ label = "{t11,pop stack 1,0<=ag(2)<inf}" ];
+	5 -> 4 [ label = "{t10,pop stack 2,0<=ag(1)<inf}" ];
+	8 -> 5 [ label = "{t9,pop stack 1,0<=ag(2)<inf}" ];
+	6 -> 8 [ label = "{t8,pop stack 1,0<=ag(2)<inf}" ];
+	7 -> 6 [ label = "{t7,pop stack 2,0<=ag(3)<inf}" ];
+	10 -> 10 [ label = "{t2,push 2 stack 1}" ];
+	9 -> 9 [ label = "{t4,push 3 stack 2}" ];
+	8 -> 7 [ label = "{t6,pop stack 2,0<=ag(3)<inf}" ];
+	9 -> 8 [ label = "{t5}" ];
+	10 -> 9 [ label = "{t3,push 1 stack 2}" ];
+	11 -> 10 [ label = "{t1,push 1 stack 1}" ];
+}

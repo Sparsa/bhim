@@ -46,6 +46,16 @@ compatible, i.e., the Multistack Pushdown Automata is drawn in UPPAAL and saved 
 UPPAAL can not handle stack operations; hence we use the synchronization parameters of UPPAAL to denote
 stack operations. 
 
+When BHIM runs on an input it also produces a "graphviz"[https://graphviz.org/] compatible file with ".dot" extension. Which
+is basically a description of the MPDA as a state transition system(graphs). This ".dot" 
+file can be compiled using the command,
+
+    $ dot -Tps EXAMPLE_NAME.xml.dot -o outfile.ps
+
+which will generate "output.ps" file showing the current input MPDA as a graph. This command 
+is part of "graphviz" package. As the graphviz package is not available in the virtual machine
+provided for artifact evaluation we are providing "output.ps" file for all examples in the paper.
+
 To make easy execution each benchmark files, we added a script called "run.sh" to each benchmark directory. 
 The parameters are already given in the scripts and just running it will give you the respective row of the
 tables presented in the paper.

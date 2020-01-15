@@ -139,7 +139,10 @@ int main(int argc, char** argv) {
     
     ///////  NEW CONCATENATION CODE ////////
     
-    
+    string dotFile(filename); 
+    dotFile.append(".dot") ;
+    drawsystem(dotFile,a);
+
      
     
     //a.printAutomata(cout);

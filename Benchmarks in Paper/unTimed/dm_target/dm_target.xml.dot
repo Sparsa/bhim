@@ -1,0 +1,33 @@
+digraph finite_state_machine {
+	node [shape = point ]; qi0;
+	node [shape = doublecircle];3;
+	node [shape=circle];
+	qi0 -> 13;
+	12 -> 12 [ label = "{tn:0}" ];
+	10 -> 10 [ label = "{tn:1}" ];
+	5 -> 5 [ label = "{tn:2}" ];
+	4 -> 4 [ label = "{tn:3}" ];
+	2 -> 2 [ label = "{tn:4}" ];
+	9 -> 9 [ label = "{tn:5}" ];
+	7 -> 7 [ label = "{tn:6}" ];
+	8 -> 8 [ label = "{tn:7}" ];
+	7 -> 11 [ label = "{start_again,push 1 stack 1}" ];
+	11 -> 6 [ label = "{time_lapse}" ];
+	6 -> 2 [ label = "{(10),pop stack 2,0<=ag(2)<inf}" ];
+	5 -> 6 [ label = "{(8),pop stack 2,0<=ag(1)<inf}" ];
+	10 -> 11 [ label = "{not_exist}" ];
+	3 -> 3 [ label = "{(12),pop stack 2,0<=ag(1)<inf}" ];
+	3 -> 3 [ label = "{(13),pop stack 2,0<=ag(2)<inf}" ];
+	1 -> 1 [ label = "{(16),pop stack 1,0<=ag(2)<inf}" ];
+	1 -> 1 [ label = "{(15),pop stack 1,0<=ag(1)<inf}" ];
+	6 -> 5 [ label = "{(7),pop stack 1,0<=ag(1)<inf}" ];
+	2 -> 1 [ label = "{(14),pop stack 1,0<=ag(1)<inf}" ];
+	4 -> 3 [ label = "{(11),pop stack 2,0<=ag(1)<inf}" ];
+	6 -> 4 [ label = "{(9),pop stack 1,0<=ag(2)<inf}" ];
+	8 -> 7 [ label = "{set_flag}" ];
+	9 -> 8 [ label = "{(5),push 1 stack 1}" ];
+	10 -> 9 [ label = "{exist}" ];
+	11 -> 10 [ label = "{(3),push 1 stack 2}" ];
+	12 -> 11 [ label = "{(2),push 2 stack 1}" ];
+	13 -> 12 [ label = "{(1),push 2 stack 2}" ];
+}

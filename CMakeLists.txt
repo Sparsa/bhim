@@ -19,6 +19,7 @@ add_executable(bhim
 	src/tinyxmlerror.cpp
 	src/tinyxmlparser.cpp
         src/automata.cpp
-        src/concatenationMultiStack.cpp
+		src/concatenationMultiStack.cpp
+		src/drawsystem.cpp
         src/main.cpp include/linkedlist.h )
 target_link_libraries(bhim)

@@ -124,6 +124,7 @@
 		<transition>
 			<source ref="id28"/>
 			<target ref="id28"/>
+			<label kind="select" x="-611" y="480">t5</label>
 			<label kind="synchronisation" x="-611" y="514">pop,s1,add,pop&gt;=0</label>
 			<nail x="-569" y="612"/>
 			<nail x="-527" y="544"/>
@@ -351,26 +352,29 @@
 		<transition>
 			<source ref="id26"/>
 			<target ref="id25"/>
+			<label kind="select" x="-616" y="722">t9</label>
 			<label kind="synchronisation" x="-773" y="765">pop,s2,stop,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id27"/>
 			<target ref="id26"/>
-			<label kind="select" x="-637" y="680">7</label>
+			<label kind="select" x="-637" y="680">t7</label>
 		</transition>
 		<transition>
 			<source ref="id28"/>
 			<target ref="id27"/>
-			<label kind="select" x="-663" y="552">6</label>
+			<label kind="select" x="-663" y="552">t6</label>
 		</transition>
 		<transition>
 			<source ref="id29"/>
 			<target ref="id28"/>
+			<label kind="select" x="-629" y="416">t12</label>
 			<label kind="synchronisation" x="-799" y="442">pop,s2,dr,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id14"/>
 			<target ref="id20"/>
+			<label kind="select" x="-747" y="-331">t1</label>
 			<label kind="synchronisation" x="-747" y="-297">push,s2,stop</label>
 		</transition>
 		<transition>
@@ -414,21 +418,23 @@
 		<transition>
 			<source ref="id23"/>
 			<target ref="id29"/>
-			<label kind="select" x="-637" y="301">11</label>
+			<label kind="select" x="-637" y="301">t11</label>
 		</transition>
 		<transition>
 			<source ref="id22"/>
 			<target ref="id23"/>
-			<label kind="select" x="-641" y="157">10</label>
+			<label kind="select" x="-641" y="157">t10</label>
 		</transition>
 		<transition>
 			<source ref="id21"/>
 			<target ref="id22"/>
+			<label kind="select" x="-667" y="-22">t3</label>
 			<label kind="synchronisation" x="-748" y="34">push,s2,dr</label>
 		</transition>
 		<transition>
 			<source ref="id20"/>
 			<target ref="id21"/>
+			<label kind="select" x="-675" y="-191">t2</label>
 		</transition>
 		<transition>
 			<source ref="id9"/>

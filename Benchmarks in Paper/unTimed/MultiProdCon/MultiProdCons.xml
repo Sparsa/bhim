@@ -32,31 +32,38 @@
 		<transition>
 			<source ref="id8"/>
 			<target ref="id1"/>
+			<label kind="select" x="247" y="55">t17</label>
 		</transition>
 		<transition>
 			<source ref="id8"/>
 			<target ref="id2"/>
+			<label kind="select" x="216" y="72">t15</label>
 		</transition>
 		<transition>
 			<source ref="id1"/>
 			<target ref="id8"/>
+			<label kind="select" x="247" y="29">t18</label>
 			<nail x="331" y="102"/>
 		</transition>
 		<transition>
 			<source ref="id2"/>
 			<target ref="id1"/>
+			<label kind="select" x="222" y="119">t16</label>
 		</transition>
 		<transition>
 			<source ref="id0"/>
 			<target ref="id2"/>
+			<label kind="select" x="182" y="102">t14</label>
 		</transition>
 		<transition>
 			<source ref="id8"/>
 			<target ref="id0"/>
+			<label kind="select" x="179" y="38">t13</label>
 		</transition>
 		<transition>
 			<source ref="id3"/>
 			<target ref="id3"/>
+			<label kind="select" x="468" y="348">t12</label>
 			<label kind="synchronisation" x="705" y="425">pop,s2,$,pop&gt;=0</label>
 			<nail x="697" y="425"/>
 			<nail x="697" y="510"/>
@@ -64,6 +71,7 @@
 		<transition>
 			<source ref="id3"/>
 			<target ref="id3"/>
+			<label kind="select" x="383" y="306">t11</label>
 			<label kind="synchronisation" x="204" y="357">pop,s2,2,pop&gt;=0</label>
 			<nail x="365" y="340"/>
 			<nail x="297" y="476"/>
@@ -73,26 +81,31 @@
 		<transition>
 			<source ref="id4"/>
 			<target ref="id3"/>
+			<label kind="select" x="468" y="289">t10</label>
 			<label kind="synchronisation" x="433" y="272">pop,s1,$,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id7"/>
 			<target ref="id4"/>
+			<label kind="select" x="460" y="131">t9</label>
 			<label kind="synchronisation" x="561" y="187">pop,s2,2,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id5"/>
 			<target ref="id7"/>
+			<label kind="select" x="460" y="-68">t8</label>
 			<label kind="synchronisation" x="552" y="-51">pop,s2,2,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id6"/>
 			<target ref="id5"/>
+			<label kind="select" x="485" y="-140">t7</label>
 			<label kind="synchronisation" x="484" y="-144">pop,s1,1,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id9"/>
 			<target ref="id9"/>
+			<label kind="select" x="-92" y="55">t2</label>
 			<label kind="synchronisation" x="-92" y="89">push,s2,2</label>
 			<nail x="-110" y="153"/>
 			<nail x="-8" y="255"/>
@@ -101,6 +114,7 @@
 		<transition>
 			<source ref="id8"/>
 			<target ref="id8"/>
+			<label kind="select" x="-33" y="-68">t4</label>
 			<label kind="synchronisation" x="-33" y="-65">push,s1,1</label>
 			<nail x="-51" y="-94"/>
 			<nail x="51" y="-196"/>
@@ -109,20 +123,24 @@
 		<transition>
 			<source ref="id7"/>
 			<target ref="id6"/>
+			<label kind="select" x="454" y="-64">t6</label>
 			<label kind="synchronisation" x="331" y="-17">pop,s1,1,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id8"/>
 			<target ref="id7"/>
+			<label kind="select" x="247" y="8">t5</label>
 		</transition>
 		<transition>
 			<source ref="id9"/>
 			<target ref="id8"/>
+			<label kind="select" x="35" y="8">t3</label>
 			<label kind="synchronisation" x="35" y="42">push,s1,$</label>
 		</transition>
 		<transition>
 			<source ref="id10"/>
 			<target ref="id9"/>
+			<label kind="select" x="-135" y="8">t1</label>
 			<label kind="synchronisation" x="-135" y="42">push,s2,$</label>
 		</transition>
 	</template>

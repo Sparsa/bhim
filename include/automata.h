@@ -83,7 +83,7 @@ public:
     unsigned long number_of_states, number_of_transitions;
     vector<Transition> transition_list;
     int start_state,final_state;
-    vector<unsigned long> list_of_clocks; //int number_of_clocks;
+    vector<string> list_of_clocks; //int number_of_clocks;
     int number_of_stacks;
     int number_of_alphabet;
     int number_of_stack_alphabet;
@@ -110,6 +110,6 @@ public:
     // the maximumConstraint is maximum constraint in the 
 
 };
-
+void drawsystem(string outfile, const Automata& a) ;
 #endif 
 

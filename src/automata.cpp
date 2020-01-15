@@ -532,7 +532,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                     }
                                     else {
                                         number_of_clocks++;	// increment the number of clocks
-                                        list_of_clocks.push_back(number_of_clocks);
+                                        list_of_clocks.push_back(cm[1].str());
                                         //maximum_constant.push_back(0); //the initial value of the clocks is this.
                                         map_max_constraints[number_of_clocks] = 0; // first initialize to zero.
                                         map_of_clocks[cm[1].str ()] = number_of_clocks;
@@ -544,7 +544,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                     }
                                     else {
                                         number_of_clocks++;	// increment the number of clocks
-                                        list_of_clocks.push_back(number_of_clocks);
+                                        list_of_clocks.push_back(cm[2].str());
                                         //maximum_constant.push_back(0); // same as above.
                                         map_max_constraints[number_of_clocks] = 0; // first initialize the maximum constraint to 0.
                                         map_of_clocks[cm[2].str ()] = number_of_clocks;
@@ -564,7 +564,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                     }
                                     else {
                                         number_of_clocks++;
-                                        list_of_clocks.push_back(number_of_clocks);
+                                        list_of_clocks.push_back(sm[1].str());
                                         map_max_constraints[number_of_clocks] = 0;
                                         map_of_clocks[sm[1].str ()] = number_of_clocks;
                                         g.clock = number_of_clocks;
@@ -616,7 +616,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                     }
                                     else {
                                         number_of_clocks++;	// increment the number of clocks
-                                        list_of_clocks.push_back(number_of_clocks);
+                                        list_of_clocks.push_back(cm[1].str());
                                         map_max_constraints[number_of_clocks] = 0;
                                         map_of_clocks[cm[1].str ()] = number_of_clocks;
                                         g.clock = number_of_clocks;
@@ -627,7 +627,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                     }
                                     else {
                                         number_of_clocks++;	// increment the number of clocks
-                                        list_of_clocks.push_back(number_of_clocks);
+                                        list_of_clocks.push_back(cm[2].str());
                                         map_max_constraints[number_of_clocks] = 0;
                                         map_of_clocks[cm[2].str ()] = number_of_clocks;
                                         g.clock_diag = number_of_clocks;
@@ -647,7 +647,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                     }
                                     else {
                                         number_of_clocks++;
-                                        list_of_clocks.push_back(number_of_clocks);
+                                        list_of_clocks.push_back(sm[1].str());
                                         map_max_constraints[number_of_clocks] = 0;
                                         map_of_clocks[sm[1].str ()] = number_of_clocks;
                                         g.clock = number_of_clocks;
@@ -694,7 +694,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                     }
                                     else {
                                         number_of_clocks++;	// increment the number of clocks
-                                        list_of_clocks.push_back(number_of_clocks);
+                                        list_of_clocks.push_back(cm[1].str());
                                         map_max_constraints[number_of_clocks] = 0;
                                         map_of_clocks[cm[1].str ()] = number_of_clocks;
                                         g.clock = number_of_clocks;
@@ -705,7 +705,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                     }
                                     else {
                                         number_of_clocks++;	// increment the number of clocks
-                                        list_of_clocks.push_back(number_of_clocks);
+                                        list_of_clocks.push_back(cm[2].str());
                                         map_max_constraints[number_of_clocks] = 0;
                                         map_of_clocks[cm[2].str ()] = number_of_clocks;
                                         g.clock_diag = number_of_clocks;
@@ -726,7 +726,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                     }
                                     else {
                                         number_of_clocks++;
-                                        list_of_clocks.push_back(number_of_clocks);
+                                        list_of_clocks.push_back(sm[1].str());
                                         map_max_constraints[number_of_clocks] = 0;
                                         map_of_clocks[sm[1].str ()] = number_of_clocks;
                                         g.clock = number_of_clocks;
@@ -772,7 +772,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                     }
                                     else {
                                         number_of_clocks++;	// increment the number of clocks
-                                        list_of_clocks.push_back(number_of_clocks);
+                                        list_of_clocks.push_back(cm[1].str());
                                         map_max_constraints[number_of_clocks] = 0;
                                         map_of_clocks[cm[1].str ()] = number_of_clocks;
                                         g.clock = number_of_clocks;
@@ -783,7 +783,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                     }
                                     else {
                                         number_of_clocks++;	// increment the number of clocks
-                                        list_of_clocks.push_back(number_of_clocks);
+                                        list_of_clocks.push_back(cm[2].str());
                                         map_max_constraints[number_of_clocks] = 0;
                                         map_of_clocks[cm[2].str ()] = number_of_clocks;
                                         g.clock_diag = number_of_clocks;
@@ -802,7 +802,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                     }
                                     else {
                                         number_of_clocks++;
-                                        list_of_clocks.push_back(number_of_clocks);
+                                        list_of_clocks.push_back(sm[1].str());
                                         map_max_constraints[number_of_clocks] = 0;
                                         map_of_clocks[sm[1].str ()] = number_of_clocks;
                                         g.clock = number_of_clocks;
@@ -848,7 +848,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                     }
                                     else {
                                         number_of_clocks++;	// increment the number of clocks
-                                        list_of_clocks.push_back(number_of_clocks);
+                                        list_of_clocks.push_back(cm[1].str());
                                         map_max_constraints[number_of_clocks] = 0;
                                         map_of_clocks[cm[1].str ()] = number_of_clocks;
                                         g.clock = number_of_clocks;
@@ -859,7 +859,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                     }
                                     else {
                                         number_of_clocks++;	// increment the number of clocks
-                                        list_of_clocks.push_back(number_of_clocks);
+                                        list_of_clocks.push_back(cm[2].str());
                                         map_max_constraints[number_of_clocks] = 0;
                                         map_of_clocks[cm[2].str ()] = number_of_clocks;
                                         g.clock_diag = number_of_clocks;
@@ -880,7 +880,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                     }
                                     else {
                                         number_of_clocks++;
-                                        list_of_clocks.push_back(number_of_clocks);
+                                        list_of_clocks.push_back(sm[1].str());
                                         map_max_constraints[number_of_clocks ] = 0;
                                         map_of_clocks[sm[1].str ()] = number_of_clocks;
                                         g.clock = number_of_clocks;
@@ -955,7 +955,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                 else		// else we need to give the clock a different number
                                 {
                                     number_of_clocks++;
-                                    list_of_clocks.push_back(number_of_clocks);
+                                    list_of_clocks.push_back(resetmatch[1].str());
                                     map_max_constraints[number_of_clocks] = 0;
                                     map_of_clocks[resetmatch[1].str ()] = number_of_clocks;
                                     //t.reset_list |= a32[number_of_clocks];
@@ -1059,7 +1059,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                         else		// else we need to give the clock a different number
                                         {
                                             number_of_clocks++;
-                                            list_of_clocks.push_back(number_of_clocks);
+                                            list_of_clocks.push_back(cm[2].str());
                                             map_max_constraints[number_of_clocks] = 0;
                                             map_of_clocks[cm[2].str ()] = number_of_clocks;
                                             t.stackOp.stack_pushed_clock =
@@ -1105,7 +1105,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                         else		// else we need to give the clock a different number
                                         {
                                             number_of_clocks++;
-                                            list_of_clocks.push_back(number_of_clocks);
+                                            list_of_clocks.push_back(cm[2].str());
                                             //maximum_constant.push_back(0);
                                             map_of_clocks[cm[2].str ()] = number_of_clocks;
                                             t.stackOp.stack_pushed_clock =
@@ -1146,7 +1146,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                         else		// else we need to give the clock a different number
                                         {
                                             number_of_clocks++;
-                                            list_of_clocks.push_back(number_of_clocks);
+                                            list_of_clocks.push_back(cm[2].str());
                                             //maximum_constant.push_back(0);
                                             map_of_clocks[cm[2].str ()] = number_of_clocks;
                                             t.stackOp.stack_pushed_clock =
@@ -1185,7 +1185,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                         else		// else we need to give the clock a different number
                                         {
                                             number_of_clocks++;
-                                            list_of_clocks.push_back(number_of_clocks);
+                                            list_of_clocks.push_back(cm[2].str());
                                             //maximum_constant.push_back(0);
                                             map_of_clocks[cm[2].str ()] = number_of_clocks;
                                             t.stackOp.stack_pushed_clock =
@@ -1227,7 +1227,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                         else		// else we need to give the clock a different number
                                         {
                                             number_of_clocks++;
-                                            list_of_clocks.push_back(number_of_clocks);
+                                            list_of_clocks.push_back(cm[2].str());
                                             // maximum_constant.push_back(0);
                                             map_of_clocks[cm[2].str ()] = number_of_clocks;
                                             t.stackOp.stack_pushed_clock =
@@ -1322,7 +1322,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                 else		// else we need to give the clock a different number
                                 {
                                     number_of_clocks++;
-                                    list_of_clocks.push_back(number_of_clocks);
+                                    list_of_clocks.push_back(result[3]);
                                     //maximum_constant.push_back(0);
                                     map_of_clocks[result[3]] = number_of_clocks;
                                     t.stackOp.stack_pushed_clock = number_of_clocks;
@@ -1385,7 +1385,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                             else	// else we need to give the clock a different number
                                             {
                                                 number_of_clocks++;
-                                                list_of_clocks.push_back(number_of_clocks);
+                                                list_of_clocks.push_back(cm[2].str());
                                                 //maximum_constant.push_back(0);
                                                 map_of_clocks[cm[2].str ()] = number_of_clocks;
                                                 t.stackOp.stack_pushed_clock =
@@ -1429,7 +1429,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                             else	// else we need to give the clock a different number
                                             {
                                                 number_of_clocks++;
-                                                list_of_clocks.push_back(number_of_clocks);
+                                                list_of_clocks.push_back(cm[2].str());
                                                 //maximum_constant.push_back(0);
                                                 map_of_clocks[cm[2].str ()] = number_of_clocks;
                                                 t.stackOp.stack_pushed_clock =
@@ -1469,7 +1469,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                             else	// else we need to give the clock a different number
                                             {
                                                 number_of_clocks++;
-                                                list_of_clocks.push_back(number_of_clocks);
+                                                list_of_clocks.push_back(cm[2].str());
                                                 //maximum_constant.push_back(0);
                                                 map_of_clocks[cm[2].str ()] = number_of_clocks;
                                                 t.stackOp.stack_pushed_clock =
@@ -1508,7 +1508,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                             else	// else we need to give the clock a different number
                                             {
                                                 number_of_clocks++;
-                                                list_of_clocks.push_back(number_of_clocks);
+                                                list_of_clocks.push_back(cm[2].str());
                                                 //maximum_constant.push_back(0);
                                                 map_of_clocks[cm[2].str ()] = number_of_clocks;
                                                 t.stackOp.stack_pushed_clock =
@@ -1549,7 +1549,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                             else	// else we need to give the clock a different number
                                             {
                                                 number_of_clocks++;
-                                                list_of_clocks.push_back(number_of_clocks);
+                                                list_of_clocks.push_back(cm[2].str());
                                                 //maximum_constant.push_back(0);
                                                 map_of_clocks[cm[2].str ()] = number_of_clocks;
                                                 t.stackOp.stack_pushed_clock =
