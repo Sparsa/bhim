@@ -122,71 +122,91 @@
 		</location>
 		<init ref="id14"/>
 		<transition>
+			<source ref="id54"/>
+			<target ref="id0"/>
+			<label kind="synchronisation" x="-330" y="301">pop,s2,stop,pop&gt;=0</label>
+		</transition>
+		<transition>
 			<source ref="id28"/>
 			<target ref="id28"/>
-			<label kind="synchronisation" x="-527" y="561">pop,s1,add,pop&gt;=1</label>
-			<nail x="-569" y="612"/>
-			<nail x="-527" y="544"/>
-			<nail x="-527" y="544"/>
+			<label kind="select" x="-544" y="501">t4</label>
+			<label kind="synchronisation" x="-460" y="582">pop,s1,add,pop&gt;=1</label>
+			<nail x="-502" y="633"/>
+			<nail x="-460" y="565"/>
+			<nail x="-460" y="565"/>
 		</transition>
 		<transition>
 			<source ref="id0"/>
 			<target ref="id28"/>
+			<label kind="select" x="-611" y="395">t14</label>
 			<label kind="synchronisation" x="-433" y="416">pop,s1,inr,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id24"/>
 			<target ref="id0"/>
+			<label kind="select" x="-441" y="331">t13</label>
 			<label kind="synchronisation" x="-450" y="357">push,s1,inr</label>
 		</transition>
 		<transition>
 			<source ref="id55"/>
 			<target ref="id0"/>
+			<label kind="synchronisation" x="-361" y="306">pop,s2,stop,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id56"/>
 			<target ref="id24"/>
+			<label kind="synchronisation" x="-476" y="314">pop,s2,stop,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id29"/>
 			<target ref="id24"/>
+			<label kind="select" x="-611" y="352">t12</label>
 			<label kind="synchronisation" x="-611" y="386">push,s1,add</label>
 		</transition>
 		<transition>
 			<source ref="id40"/>
 			<target ref="id49"/>
+			<label kind="synchronisation" x="527" y="165">pop,s2,dr,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id39"/>
 			<target ref="id48"/>
+			<label kind="synchronisation" x="425" y="165">pop,s2,dr,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id41"/>
 			<target ref="id50"/>
+			<label kind="synchronisation" x="314" y="165">pop,s2,dr,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id42"/>
 			<target ref="id51"/>
+			<label kind="synchronisation" x="204" y="165">pop,s2,dr,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id43"/>
 			<target ref="id52"/>
+			<label kind="synchronisation" x="93" y="157">pop,s2,dr,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id44"/>
 			<target ref="id53"/>
+			<label kind="synchronisation" x="-102" y="157">pop,s2,dr,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id45"/>
 			<target ref="id54"/>
+			<label kind="synchronisation" x="-229" y="165">pop,s2,dr,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id46"/>
 			<target ref="id55"/>
+			<label kind="synchronisation" x="-374" y="174">pop,s2,dr,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id47"/>
 			<target ref="id56"/>
+			<label kind="synchronisation" x="-493" y="174">pop,s2,dr,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id31"/>
@@ -352,7 +372,6 @@
 			<source ref="id26"/>
 			<target ref="id25"/>
 			<label kind="select" x="-586" y="756">t8</label>
-			<label kind="synchronisation" x="-773" y="765">pop,s2,stop,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id27"/>
@@ -363,12 +382,6 @@
 			<source ref="id28"/>
 			<target ref="id27"/>
 			<label kind="select" x="-663" y="552">t6</label>
-		</transition>
-		<transition>
-			<source ref="id29"/>
-			<target ref="id28"/>
-			<label kind="select" x="-612" y="450">t12</label>
-			<label kind="synchronisation" x="-765" y="442">pop,s2,dr,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id14"/>
@@ -418,11 +431,13 @@
 			<source ref="id23"/>
 			<target ref="id29"/>
 			<label kind="select" x="-637" y="301">t11</label>
+			<label kind="synchronisation" x="-637" y="335">pop,s2,stop,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id22"/>
 			<target ref="id23"/>
 			<label kind="select" x="-612" y="187">t10</label>
+			<label kind="synchronisation" x="-641" y="191">pop,s2,dr,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id21"/>
@@ -526,7 +541,7 @@
 		<transition>
 			<source ref="id45"/>
 			<target ref="id44"/>
-			<label kind="synchronisation" x="-212" y="127">pop,s1,inr,pop&gt;=1</label>
+			<label kind="synchronisation" x="-221" y="59">pop,s1,inr,pop&gt;=1</label>
 		</transition>
 		<transition>
 			<source ref="id46"/>
@@ -563,7 +578,7 @@
 		<transition>
 			<source ref="id54"/>
 			<target ref="id53"/>
-			<label kind="synchronisation" x="-212" y="212">pop,s1,inr,pop&gt;=1</label>
+			<label kind="synchronisation" x="-221" y="289">pop,s1,inr,pop&gt;=1</label>
 		</transition>
 		<transition>
 			<source ref="id55"/>

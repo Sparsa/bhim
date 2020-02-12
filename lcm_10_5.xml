@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
+<nta>
+	<declaration>// Place global declarations here.</declaration>
+	<template>
+		<name x="5" y="5">Template</name>
+		<declaration>// Place local declarations here.</declaration>
+		<location id="id0" x="-459" y="-161">
+		</location>
+		<location id="id1" x="-408" y="144">
+		</location>
+		<location id="id2" x="-535" y="195">
+		</location>
+		<location id="id3" x="-629" y="119">
+		</location>
+		<location id="id4" x="-816" y="-110">
+		</location>
+		<location id="id5" x="-858" y="-178">
+		</location>
+		<location id="id6" x="-858" y="-255">
+		</location>
+		<location id="id7" x="-790" y="-297">
+		</location>
+		<location id="id8" x="-739" y="-340">
+		</location>
+		<location id="id9" x="-620" y="-331">
+		</location>
+		<location id="id10" x="-314" y="-34">
+		</location>
+		<location id="id11" x="-705" y="-25">
+		</location>
+		<location id="id12" x="-892" y="-17">
+		</location>
+		<location id="id13" x="-59" y="263">
+			<name x="-69" y="229">end</name>
+		</location>
+		<location id="id14" x="-102" y="136">
+		</location>
+		<location id="id15" x="127" y="-51">
+		</location>
+		<location id="id16" x="-127" y="-51">
+		</location>
+		<location id="id17" x="-637" y="25">
+		</location>
+		<location id="id18" x="-578" y="-272">
+		</location>
+		<location id="id19" x="-476" y="-229">
+		</location>
+		<location id="id20" x="-476" y="-34">
+		</location>
+		<init ref="id12"/>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id19"/>
+			<label kind="select" x="-416" y="-246">t3i</label>
+			<label kind="synchronisation" x="-442" y="-212">push,s1,a</label>
+		</transition>
+		<transition>
+			<source ref="id20"/>
+			<target ref="id0"/>
+			<label kind="select" x="-467" y="-148">t3</label>
+			<label kind="synchronisation" x="-467" y="-114">push,s1,a</label>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id20"/>
+			<label kind="select" x="-798" y="-123">t11</label>
+			<label kind="synchronisation" x="-798" y="-89">push,s1,a</label>
+		</transition>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id20"/>
+			<label kind="select" x="-458" y="4">t14ii</label>
+			<label kind="synchronisation" x="-458" y="38">push,s2,b</label>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id1"/>
+			<label kind="select" x="-517" y="118">t14i</label>
+			<label kind="synchronisation" x="-517" y="152">push,s2,b</label>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id2"/>
+			<label kind="select" x="-611" y="106">t14</label>
+			<label kind="synchronisation" x="-611" y="140">push,s2,b</label>
+		</transition>
+		<transition>
+			<source ref="id17"/>
+			<target ref="id3"/>
+			<label kind="select" x="-633" y="21">t13</label>
+			<label kind="synchronisation" x="-633" y="55">push,s2,b</label>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id4"/>
+			<label kind="select" x="-884" y="-161">t10</label>
+			<label kind="synchronisation" x="-935" y="-153">push,s1,a</label>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id5"/>
+			<label kind="select" x="-760" y="-182">t9</label>
+			<label kind="synchronisation" x="-760" y="-148">push,s1,a</label>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id6"/>
+			<label kind="select" x="-782" y="-242">t8</label>
+			<label kind="synchronisation" x="-782" y="-208">push,s1,a</label>
+		</transition>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id7"/>
+			<label kind="select" x="-760" y="-297">t7</label>
+			<label kind="synchronisation" x="-760" y="-263">push,s1,a</label>
+		</transition>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id8"/>
+			<label kind="select" x="-721" y="-331">t6</label>
+			<label kind="synchronisation" x="-697" y="-365">push,s1,a</label>
+		</transition>
+		<transition>
+			<source ref="id18"/>
+			<target ref="id9"/>
+			<label kind="select" x="-645" y="-331">t5</label>
+			<label kind="synchronisation" x="-645" y="-297">push,s1,a</label>
+		</transition>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id16"/>
+			<label kind="select" x="-296" y="-93">t16</label>
+			<label kind="synchronisation" x="-296" y="-59">pop,s2,b,pop&gt;=0</label>
+		</transition>
+		<transition>
+			<source ref="id20"/>
+			<target ref="id10"/>
+			<label kind="select" x="-458" y="-85">t15</label>
+			<label kind="synchronisation" x="-458" y="-51">pop,s1,a,pop&gt;=0</label>
+		</transition>
+		<transition>
+			<source ref="id20"/>
+			<target ref="id17"/>
+			<label kind="select" x="-561" y="0">t12</label>
+			<label kind="synchronisation" x="-578" y="17">push,s2,b</label>
+		</transition>
+		<transition>
+			<source ref="id11"/>
+			<target ref="id20"/>
+			<label kind="select" x="-637" y="-51">t2</label>
+			<label kind="synchronisation" x="-603" y="-59">push,s2,$</label>
+		</transition>
+		<transition>
+			<source ref="id12"/>
+			<target ref="id11"/>
+			<label kind="select" x="-874" y="-72">t1</label>
+			<label kind="synchronisation" x="-874" y="-38">push,s1,$</label>
+		</transition>
+		<transition>
+			<source ref="id14"/>
+			<target ref="id13"/>
+			<label kind="select" x="-80" y="148">t26</label>
+			<label kind="synchronisation" x="-17" y="187">pop,s2,$,pop&gt;=0</label>
+		</transition>
+		<transition>
+			<source ref="id16"/>
+			<target ref="id14"/>
+			<label kind="select" x="-114" y="-9">t25</label>
+			<label kind="synchronisation" x="-246" y="102">pop,s1,$,pop&gt;=0</label>
+		</transition>
+		<transition>
+			<source ref="id15"/>
+			<target ref="id16"/>
+			<label kind="select" x="35" y="-26">t20</label>
+			<label kind="synchronisation" x="93" y="34">pop,s2,b,pop&gt;=0</label>
+			<nail x="17" y="102"/>
+		</transition>
+		<transition>
+			<source ref="id16"/>
+			<target ref="id15"/>
+			<label kind="select" x="-109" y="-161">t19</label>
+			<label kind="synchronisation" x="34" y="-170">pop,s1,a,pop&gt;=0</label>
+			<nail x="-34" y="-170"/>
+		</transition>
+		<transition>
+			<source ref="id19"/>
+			<target ref="id18"/>
+			<label kind="select" x="-569" y="-246">t4</label>
+			<label kind="synchronisation" x="-595" y="-229">push,s1,a</label>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+Process = Template();
+// List one or more processes to be composed into a system.
+system Process;
+    </system>
+	<queries>
+	</queries>
+</nta>
