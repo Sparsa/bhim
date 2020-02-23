@@ -103,6 +103,7 @@ int main(int argc, char** argv) {
 
     //setGlobal(argv[1],change); // set all the global variables
     Automata a(filename,option); //open an input file and extract all information in an automata object a
+    //a.printAutomata(cout);
     a.contextBound = hole_bound;
     if(a.final_state == -1){
       cout<< "No final states marked, the language accepted by the automaton is trivially Empty. Do you still want to continue with the process? Y/n" << endl;

@@ -5,214 +5,124 @@
 	<template>
 		<name x="5" y="5">Template</name>
 		<declaration>// Place local declarations here.</declaration>
-		<location id="id0" x="-76" y="263">
-			<name x="-76" y="280">end</name>
+		<location id="id0" x="-510" y="-68">
 		</location>
-		<location id="id1" x="-85" y="152">
+		<location id="id1" x="-518" y="-136">
 		</location>
-		<location id="id2" x="-323" y="271">
-			<name x="-365" y="289">end</name>
+		<location id="id2" x="136" y="76">
 		</location>
-		<location id="id3" x="-340" y="169">
+		<location id="id3" x="0" y="-34">
 		</location>
-		<location id="id4" x="-119" y="8">
+		<location id="id4" x="-195" y="-42">
 		</location>
-		<location id="id5" x="-348" y="25">
+		<location id="id5" x="-76" y="263">
+			<name x="-86" y="229">end</name>
 		</location>
-		<location id="id6" x="229" y="-136">
+		<location id="id6" x="-85" y="152">
 		</location>
-		<location id="id7" x="102" y="-212">
+		<location id="id7" x="-348" y="-42">
 		</location>
-		<location id="id8" x="-76" y="-212">
+		<location id="id8" x="102" y="-212">
 		</location>
-		<location id="id9" x="-229" y="-212">
+		<location id="id9" x="-76" y="-212">
 		</location>
-		<location id="id10" x="-357" y="-212">
+		<location id="id10" x="-229" y="-212">
 		</location>
-		<location id="id11" x="-493" y="-212">
+		<location id="id11" x="-357" y="-212">
 		</location>
-		<location id="id12" x="-603" y="-203">
+		<location id="id12" x="-493" y="-212">
 		</location>
-		<init ref="id12"/>
+		<location id="id13" x="-603" y="-203">
+		</location>
+		<init ref="id13"/>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id7"/>
+			<label kind="select" x="-501" y="-25">(return kfree)</label>
+		</transition>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id0"/>
+			<label kind="select" x="-484" y="-144">(free item)</label>
+			<label kind="synchronisation" x="-514" y="-119">pop,s1,a,pop&gt;=0</label>
+		</transition>
 		<transition>
 			<source ref="id11"/>
+			<target ref="id1"/>
+			<label kind="select" x="-416" y="-187">(call kfree)</label>
+		</transition>
+		<transition>
+			<source ref="id8"/>
 			<target ref="id11"/>
-			<nail x="-518" y="-153"/>
-			<nail x="-450" y="-136"/>
-			<nail x="-484" y="-204"/>
+			<label kind="select" x="-59" y="-187">(add to list)</label>
+			<nail x="-25" y="-119"/>
 		</transition>
 		<transition>
-			<source ref="id9"/>
-			<target ref="id9"/>
-			<nail x="-255" y="-110"/>
-			<nail x="-144" y="-119"/>
-		</transition>
-		<transition>
-			<source ref="id4"/>
-			<target ref="id4"/>
-			<nail x="-110" y="-76"/>
-			<nail x="-17" y="-42"/>
-			<nail x="-42" y="17"/>
-		</transition>
-		<transition>
-			<source ref="id3"/>
-			<target ref="id3"/>
-			<nail x="-408" y="161"/>
-			<nail x="-399" y="127"/>
-		</transition>
-		<transition>
-			<source ref="id1"/>
-			<target ref="id1"/>
-			<nail x="-85" y="102"/>
-			<nail x="8" y="42"/>
-			<nail x="59" y="93"/>
-		</transition>
-		<transition>
-			<source ref="id8"/>
-			<target ref="id8"/>
-			<nail x="-119" y="-229"/>
-			<nail x="-76" y="-323"/>
-			<nail x="8" y="-272"/>
-		</transition>
-		<transition>
-			<source ref="id6"/>
+			<source ref="id2"/>
 			<target ref="id6"/>
-			<nail x="272" y="-195"/>
-			<nail x="314" y="-144"/>
-			<nail x="272" y="-110"/>
-		</transition>
-		<transition>
-			<source ref="id7"/>
-			<target ref="id7"/>
-			<nail x="51" y="-263"/>
-			<nail x="110" y="-306"/>
-			<nail x="161" y="-255"/>
-		</transition>
-		<transition>
-			<source ref="id6"/>
-			<target ref="id10"/>
-			<label kind="select" x="-339" y="-225">start_again</label>
-			<label kind="synchronisation" x="-34" y="-136">push,s2,a</label>
-		</transition>
-		<transition>
-			<source ref="id10"/>
-			<target ref="id5"/>
-			<label kind="select" x="-352" y="-144">time_lapse</label>
-		</transition>
-		<transition>
-			<source ref="id5"/>
-			<target ref="id1"/>
-			<label kind="select" x="-271" y="93">(10)</label>
-			<label kind="synchronisation" x="-271" y="110">pop,s1,#,pop&gt;=0</label>
-			<nail x="-280" y="136"/>
-		</transition>
-		<transition>
-			<source ref="id4"/>
-			<target ref="id5"/>
-			<label kind="select" x="-238" y="16">(8)</label>
-			<label kind="synchronisation" x="-289" y="33">pop,s1,a,pop&gt;=0</label>
-			<nail x="-195" y="101"/>
-		</transition>
-		<transition>
-			<source ref="id9"/>
-			<target ref="id10"/>
-			<label kind="select" x="-330" y="-428">not_exist</label>
-			<nail x="-238" y="-356"/>
-			<nail x="-348" y="-399"/>
-		</transition>
-		<transition>
-			<source ref="id2"/>
-			<target ref="id2"/>
-			<label kind="select" x="-535" y="195">(12)</label>
-			<label kind="synchronisation" x="-577" y="221">pop,s1,a,pop&gt;=0</label>
-			<nail x="-340" y="263"/>
-			<nail x="-433" y="212"/>
-			<nail x="-450" y="271"/>
-		</transition>
-		<transition>
-			<source ref="id2"/>
-			<target ref="id2"/>
-			<label kind="select" x="-288" y="297">(13)</label>
-			<label kind="synchronisation" x="-322" y="314">pop,s1,#,pop&gt;=0</label>
-			<nail x="-280" y="229"/>
-			<nail x="-229" y="263"/>
-			<nail x="-289" y="271"/>
-		</transition>
-		<transition>
-			<source ref="id0"/>
-			<target ref="id0"/>
-			<label kind="select" x="-161" y="297">(16)</label>
-			<label kind="synchronisation" x="-144" y="314">pop,s2,#,pop&gt;=0</label>
-			<nail x="-153" y="220"/>
-			<nail x="-153" y="271"/>
-		</transition>
-		<transition>
-			<source ref="id0"/>
-			<target ref="id0"/>
-			<label kind="select" x="76" y="272">(15)</label>
-			<label kind="synchronisation" x="68" y="297">pop,s2,a,pop&gt;=0</label>
-			<nail x="0" y="221"/>
-			<nail x="85" y="246"/>
-			<nail x="26" y="271"/>
-		</transition>
-		<transition>
-			<source ref="id5"/>
-			<target ref="id4"/>
-			<label kind="select" x="-246" y="-51">(7)</label>
-			<label kind="synchronisation" x="-288" y="-17">pop,s2,a,pop&gt;=0</label>
-			<nail x="-238" y="-68"/>
-		</transition>
-		<transition>
-			<source ref="id1"/>
-			<target ref="id0"/>
-			<label kind="select" x="-161" y="153">(14)</label>
-			<label kind="synchronisation" x="-80" y="190">pop,s2,a,pop&gt;=0</label>
+			<label kind="select" x="-67" y="63">(return free)</label>
+			<label kind="synchronisation" x="-67" y="97">pop,s2,a,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id3"/>
 			<target ref="id2"/>
-			<label kind="select" x="-289" y="187">(11)</label>
-			<label kind="synchronisation" x="-331" y="203">pop,s1,a,pop&gt;=0</label>
+			<label kind="select" x="59" y="-34">(check bad free)</label>
+			<label kind="synchronisation" x="68" y="-17">pop,s1,#,pop&gt;=0</label>
 		</transition>
 		<transition>
-			<source ref="id5"/>
+			<source ref="id4"/>
 			<target ref="id3"/>
-			<label kind="select" x="-416" y="51">(9)</label>
-			<label kind="synchronisation" x="-484" y="85">pop,s2,#,pop&gt;=0</label>
+			<label kind="select" x="-177" y="-89">(call free again)</label>
+			<label kind="synchronisation" x="-177" y="-55">push,s2,a</label>
 		</transition>
 		<transition>
 			<source ref="id7"/>
-			<target ref="id6"/>
-			<label kind="select" x="119" y="-195">set_flag</label>
+			<target ref="id4"/>
+			<label kind="select" x="-314" y="-76">(check flag)</label>
 		</transition>
 		<transition>
-			<source ref="id8"/>
-			<target ref="id7"/>
-			<label kind="select" x="-58" y="-263">(5)</label>
-			<label kind="synchronisation" x="-58" y="-229">push,s2,a</label>
+			<source ref="id9"/>
+			<target ref="id11"/>
+			<label kind="select" x="-178" y="-382">(found)</label>
+			<label kind="synchronisation" x="-297" y="-357">pop,s2,a,pop&gt;=0</label>
+			<nail x="-178" y="-374"/>
+			<nail x="-374" y="-357"/>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id5"/>
+			<label kind="select" x="-17" y="153">(return register)</label>
+			<label kind="synchronisation" x="-80" y="190">pop,s2,#,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id9"/>
 			<target ref="id8"/>
-			<label kind="select" x="-211" y="-263">exist</label>
+			<label kind="select" x="-58" y="-263">(not found)</label>
+			<label kind="synchronisation" x="-58" y="-229">pop,s2,a,pop&gt;=0</label>
 		</transition>
 		<transition>
 			<source ref="id10"/>
 			<target ref="id9"/>
-			<label kind="select" x="-339" y="-263">(3)</label>
-			<label kind="synchronisation" x="-119" y="-136">push,s1,a</label>
+			<label kind="select" x="-187" y="-246">(call find)</label>
+			<label kind="synchronisation" x="-211" y="-229">push,s2,a</label>
 		</transition>
 		<transition>
 			<source ref="id11"/>
 			<target ref="id10"/>
-			<label kind="select" x="-475" y="-263">(2)</label>
-			<label kind="synchronisation" x="-475" y="-229">push,s2,#</label>
+			<label kind="select" x="-331" y="-289">(allocation)</label>
+			<label kind="synchronisation" x="-314" y="-246">push,s1,a</label>
 		</transition>
 		<transition>
 			<source ref="id12"/>
 			<target ref="id11"/>
-			<label kind="select" x="-585" y="-258">(1)</label>
-			<label kind="synchronisation" x="-585" y="-224">push,s1,#</label>
+			<label kind="select" x="-459" y="-263">(2)</label>
+			<label kind="synchronisation" x="-475" y="-229">push,s1,#</label>
+		</transition>
+		<transition>
+			<source ref="id13"/>
+			<target ref="id12"/>
+			<label kind="select" x="-585" y="-258">(call register)</label>
+			<label kind="synchronisation" x="-585" y="-224">push,s2,#</label>
 		</transition>
 	</template>
 	<system>// Place template instantiations here.

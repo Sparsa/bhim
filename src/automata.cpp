@@ -43,6 +43,7 @@ Transition::printTransition (ostream & output_stream) const
         output_stream << stackOp.op << " " << stackOp.stack_alphabet_push << endl;
     }
     else if (stackOp.op == 2) {	//stack pop operation
+        output_stream << "POP: " << endl;
         output_stream << stackOp.op<< " " << stackOp.stack_pop << " " << stackOp.
                 stack_alphabet_pop << " " << stackOp.lower_bound << " " << stackOp.
                 lower_open << " " << stackOp.upper_bound << " " << stackOp.
@@ -147,9 +148,14 @@ set<ul> Transition::checkStackConstraint(set<unsigned long> s) const{
     return returnSet;
 }
 bool Transition::checkStackConstraint(unsigned long time) const{
-    
+    /* if(stackOp.upper_bound == 4 ){
+        cout << stackOp.lower_bound << " " << time<< endl;
+    } */
+        if(stackOp.upper_bound == stackOp.lower_bound && stackOp.upper_bound == time){
+            return true;
+        }
    
-        if(time >= stackOp.lower_bound && time <=stackOp.upper_bound){
+        if( time >= stackOp.lower_bound && time <=stackOp.upper_bound){
             //cout << *(set_it) ;
             return true;
         }
@@ -996,7 +1002,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                         t.stackOp.lower_bound = 0;	///default values
                         t.stackOp.lower_open = false;
                         t.stackOp.upper_bound = INF;
-                        t.stackOp.upper_open = true;
+                        t.stackOp.upper_open = false;
                         if (result.size () == 7)	//this is both pop and push
                         {
                             //string temporary = sm[1].str();
@@ -1076,8 +1082,8 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                     }
                                     else {
                                         
-                                        t.stackOp.lower_bound = t.stackOp.upper_bound =
-                                                stoi (sm[2].str ());
+                                        t.stackOp.lower_bound = max(int(t.stackOp.lower_bound),stoi(sm[2].str()));
+                                        t.stackOp.upper_bound = min(int(t.stackOp.upper_bound),stoi (sm[2].str ()));
                                         maximum_stack_constant = max(maximum_stack_constant,t.stackOp.lower_bound);
                                         //maximum_constant =
                                         //  max (maximum_constant, t.stackOp.lower_bound);
@@ -1201,7 +1207,9 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                     
                                     else {
                                         
-                                        t.stackOp.upper_bound = stoi (sm[2].str ());
+                                        t.stackOp.upper_bound = min(int(t.stackOp.upper_bound),stoi (sm[2].str ()));
+                                        t.stackOp.lower_bound = max(0,int(t.stackOp.lower_bound));
+                                        t.stackOp.lower_open=false;
                                         maximum_stack_constant = max(maximum_stack_constant,t.stackOp.upper_bound);
                                         //maximum_constant =
                                         //  max (maximum_constant, t.stackOp.upper_bound);
@@ -1242,12 +1250,14 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                         t.stackOp.lower_open = false;
                                     }
                                     else {
-                                        t.stackOp.lower_bound = stoi (sm[2].str ());
+                                        t.stackOp.lower_bound = max(stoi (sm[2].str ()),int(t.stackOp.lower_bound));
+                                        t.stackOp.upper_bound = min(INF,int(t.stackOp.upper_bound));
                                         maximum_stack_constant = max(maximum_stack_constant,t.stackOp.lower_bound);
                                         //maximum_constant =
                                         //  max (maximum_constant, t.stackOp.lower_bound);
                                         //cout << "e_greaterthan_eq " << "Value :" << sm[2] << endl;
                                         t.stackOp.lower_open = false;
+                                        t.stackOp.upper_open = false;
                                         //                                    t.stackOp.upper_bound = -1;
                                         //                                    t.stackOp.upper_open = true;
                                         //map_clock_guard[g.clock] = g;
@@ -1583,7 +1593,7 @@ Automata::Automata(char* filename, int type){ // when the type is 0 then
                                 }
                             }
                             else {
-                                cout << "This should be a special push or a pop operation" <<
+                                cout << result[0] << " should be a special push or a pop operation" <<
                                         endl;
                             }
                         }

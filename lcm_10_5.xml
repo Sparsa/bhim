@@ -50,6 +50,19 @@
 		</location>
 		<init ref="id12"/>
 		<transition>
+			<source ref="id16"/>
+			<target ref="id20"/>
+			<label kind="select" x="-271" y="-43">t17i</label>
+			<nail x="-289" y="68"/>
+			<nail x="-289" y="68"/>
+		</transition>
+		<transition>
+			<source ref="id16"/>
+			<target ref="id20"/>
+			<label kind="select" x="-271" y="-170">t16i</label>
+			<nail x="-289" y="-187"/>
+		</transition>
+		<transition>
 			<source ref="id0"/>
 			<target ref="id19"/>
 			<label kind="select" x="-416" y="-246">t3i</label>

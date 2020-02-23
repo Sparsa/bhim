@@ -68,7 +68,7 @@
 		<transition>
 			<source ref="id19"/>
 			<target ref="id19"/>
-			<label kind="synchronisation" x="-245" y="361">pop,s2,i,pop&gt;=0</label>
+			<label kind="synchronisation" x="-229" y="374">pop,s2,i,pop&gt;=0</label>
 			<nail x="-263" y="425"/>
 			<nail x="-42" y="459"/>
 		</transition>
@@ -96,14 +96,14 @@
 		<transition>
 			<source ref="id3"/>
 			<target ref="id3"/>
-			<label kind="synchronisation" x="715" y="378">pop,s2,i,pop&gt;=0</label>
+			<label kind="synchronisation" x="867" y="374">pop,s2,i,pop&gt;=0</label>
 			<nail x="841" y="374"/>
 			<nail x="858" y="416"/>
 		</transition>
 		<transition>
 			<source ref="id3"/>
 			<target ref="id3"/>
-			<label kind="synchronisation" x="715" y="369">pop,s1,i,pop&gt;=0</label>
+			<label kind="synchronisation" x="722" y="323">pop,s1,i,pop&gt;=0</label>
 			<nail x="705" y="408"/>
 			<nail x="748" y="314"/>
 			<nail x="807" y="357"/>
@@ -170,7 +170,7 @@
 		<transition>
 			<source ref="id7"/>
 			<target ref="id7"/>
-			<label kind="synchronisation" x="723" y="199">pop,s1,i,pop&gt;=0</label>
+			<label kind="synchronisation" x="841" y="221">pop,s1,i,pop&gt;=0</label>
 			<nail x="824" y="195"/>
 			<nail x="875" y="272"/>
 			<nail x="824" y="314"/>
@@ -188,7 +188,7 @@
 		<transition>
 			<source ref="id15"/>
 			<target ref="id15"/>
-			<label kind="synchronisation" x="732" y="-131">pop,s1,i,pop&gt;=0</label>
+			<label kind="synchronisation" x="824" y="-187">pop,s1,i,pop&gt;=0</label>
 			<nail x="909" y="-178"/>
 			<nail x="986" y="-110"/>
 			<nail x="969" y="-68"/>

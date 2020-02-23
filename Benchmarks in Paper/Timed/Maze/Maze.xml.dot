@@ -3,16 +3,16 @@ digraph finite_state_machine {
 	node [shape = doublecircle];3;
 	node [shape=circle];
 	qi0 -> 2;
-	1 -> 4 [ label = "{t15,0<=x1<=0}" ];
-	4 -> 1 [ label = "{t14,x1:=0,pop stack 1,1<=ag(1)<=4}" ];
-	2 -> 9 [ label = "{t1,push 2 stack 2}" ];
-	9 -> 3 [ label = "{t19,0<=x1<1}" ];
-	4 -> 9 [ label = "{t16,0<=x1<inf,x1:=0,pop stack 2,4<=ag(2)<inf}" ];
+	1 -> 4 [ label = "{t15,0<=x1<=0,pop stack 1,1<=ag(1)<=4}" ];
+	4 -> 1 [ label = "{t14,0<=x1<1,x1:=0,pop stack 2,4<=ag(2)<=6}" ];
+	2 -> 9 [ label = "{t1,push 3 stack 2}" ];
+	9 -> 3 [ label = "{t19,0<=x1<=0,pop stack 2,5<=ag(3)<=5}" ];
+	4 -> 9 [ label = "{t16,0<=x1<1,x1:=0}" ];
 	8 -> 6 [ label = "{t6,0<=x1<=0,2<=x2<3,x2:=0}" ];
 	6 -> 4 [ label = "{t11,0<=x1<=0,2<=x2<3,x2:=0}" ];
-	5 -> 6 [ label = "{t10,0<=x1<=0,x1:=0,push 1 stack 1}" ];
-	6 -> 5 [ label = "{t9,0<=x1<inf,x1:=0,pop stack 2,2<=ag(1)<=4}" ];
+	5 -> 6 [ label = "{t10,0<=x1<1,x1:=0}" ];
+	6 -> 5 [ label = "{t9,0<=x1<=0,x1:=0,push 1 stack 1}" ];
 	7 -> 8 [ label = "{t5,0<=x1<1,x1:=0}" ];
-	8 -> 7 [ label = "{t4,0<=x1<=0,push 1 stack 2}" ];
-	9 -> 8 [ label = "{t2,0<=x1<=0}" ];
+	8 -> 7 [ label = "{t4,0<=x1<=0,push 2 stack 2}" ];
+	9 -> 8 [ label = "{t2,0<=x1<=0,x2:=0}" ];
 }

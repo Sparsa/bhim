@@ -85,7 +85,7 @@ public:
     void printPossibleUselessTransitions( bnu::matrix<vector<unsigned long> > useless, const Automata& a); // this prints possible useless transitionsb
     bnu::matrix<vector<unsigned long> > getPossibleUselessTransitions2(vector<unsigned long> valuations, const Automata& a); // this returns a matrix with
     vector<run> getPath(unsigned long index1,unsigned long index2, const Automata& a);
-    vector<run> getPath3(unsigned long index1,unsigned long index2, const Automata& a);
+    vector<run> getPath3(unsigned long index1,unsigned long index2, const Automata& a,unordered_map<string,int> &loop,unordered_map<string,int> &loop2);
       vector<run> getPath2(unsigned long index1,unsigned long index2, const Automata& a,unordered_map<string,int> &loop,unordered_map<string,int> &loop2);
     vector<run> computePath(bnu::matrix<vector<unsigned long> > &getUselessTransition,vector<unsigned long> valuation,unsigned long index1, unsigned long index2, const Automata& a);
      vector<run> computePath2(bnu::matrix<vector<unsigned long> > &getUselessTransition,vector<unsigned long> valuation,unsigned long index1, unsigned long index2, const Automata& a);

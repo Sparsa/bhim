@@ -298,7 +298,11 @@ bool Concatenation::closure(const Automata& a){ // given the matrix it will comp
                             flag = false;
                             m = i;
                             n = j;
-                            
+                            if(flag == false){
+            printWitness2(m,n,a);
+
+            return false;
+        }
                             
                         }
 
@@ -477,7 +481,7 @@ bool Concatenation::isEmpty(const Automata &a){
                         vector< vector<State> >afterCompleteBlock = (MultiIt).addHoleStack1(*this,a); // create a hole of stack 1
                         //cout << "Adding a hole of Stack 1 " << endl;
                         for(unsigned long vector_it = 0;vector_it < afterCompleteBlock.size();++vector_it){
-                            unsigned long indexEnd = afterCompleteBlock[vector_it].size()-1; // get the right most point of the hole
+                            unsigned long indexEnd = afterCompleteBlock[vector_it].size()-2; // get the right most point of the hole
                             vector<unsigned long> newStack1 = (MultiIt).Stack1; // create a new stack for that
                             newStack1.push_back(indexEnd); // push that end point of hole here
                             ul totalTimeL = min(afterCompleteBlock[vector_it][indexEnd-1].time + MultiIt.totalTimeLapsed,a.max_const); //compute the total time lapsed
@@ -497,7 +501,7 @@ bool Concatenation::isEmpty(const Automata &a){
                         vector< vector<State> > afterCompleteBlock = (MultiIt).addHoleStack2(*this,a);
                         //vector<vector<State> >::iterator vector_it;
                         for(unsigned long vector_it = 0;vector_it < afterCompleteBlock.size();++vector_it){ // creating a hole of stack 2.
-                            unsigned long indexEnd = afterCompleteBlock[vector_it].size()-1;//the last state
+                            unsigned long indexEnd = afterCompleteBlock[vector_it].size()-2;//the last state
                             vector<unsigned long> newStack2 = (MultiIt).Stack2;
                             newStack2.push_back(indexEnd);
                             ul totalTimeL = min(afterCompleteBlock[vector_it][indexEnd-1].time+MultiIt.totalTimeLapsed,a.max_const); // the time is saved in the last.
@@ -543,37 +547,45 @@ bool Concatenation::isEmpty(const Automata &a){
                                     
                                     ul totalTimeForStack = 0;
                                     for(ul index1 = HoleLastPoint; index1 < MultiIt.currStates.size();index1++){
-                                        totalTimeForStack = min(totalTimeForStack+ MultiIt.currStates[index1].time,a.max_const); // compute total time lapsed.
+                                        totalTimeForStack = totalTimeForStack+ MultiIt.currStates[index1].time; // compute total time lapsed.
                                     }
+                                     totalTimeForStack = min(totalTimeForStack,a.max_const);
                                     for(unsigned long stateIterator = 0; stateIterator < list_of_states.size();stateIterator++){ // loop for all states to get a good states
                                     set<ul> leftBag = D2c(indexOfHoleLeftState,stateIterator); // get the possible value of times
                                     set<ul> rightBag = D2(stateIterator,indexOfHoleRightState).second;
                                     int stack_push_alph = D2(stateIterator,indexOfHoleRightState).first;
                                     for(auto left: leftBag){
                                         for(auto right:rightBag){
-                                            if(min(left+right,a.max_const) == timeInHole && a.transition_list[transitionIt].checkStackConstraint(min(right+totalTimeForStack,a.max_const)) && stack_push_alph == stackSymbolT){
+                                            if(min(left+right,a.max_const) == timeInHole && a.transition_list[transitionIt].checkStackConstraint(min(right+totalTimeForStack,a.max_const)) && stack_push_alph == stackSymbolT){    
                                                 vector<State> presentStates = MultiIt.currStates;
                                                 //this part is for closing the hole
+                                                /* if(left==0){
+                                                    cout<< indexOfHoleLeftState << " " << stateIterator << " " << left << " " << min(right+totalTimeForStack,a.max_const)<< endl;
+                                                } */
                                                 if(indexOfHoleLeftState == stateIterator && left == 0){ // right will retain the information of the time.
                                                     // then we will close the hole.
                                                     //cout << "Closing the Hole of Stack 2 " << endl;
+                                                    ul newTime = min(presentStates[HoleLeftPoint-1].time + presentStates[HoleLeftPoint].time + presentStates[HoleLastPoint].time,a.max_const);
+                                                    
                                                     presentStates.erase(presentStates.begin()+HoleLeftPoint); // erasing the stuff.
+                                                    presentStates.erase(presentStates.begin()+HoleLeftPoint);
                                                     vector<ul> newStack1 = MultiIt.Stack1;
                                                     for(auto stack1Id = 0; stack1Id<newStack1.size();stack1Id++){
                                                         if(newStack1[stack1Id]> HoleLeftPoint){
-                                                            newStack1[stack1Id]= MultiIt.Stack1[stack1Id]-1; // reduce the values in the stack.
+                                                            newStack1[stack1Id]= MultiIt.Stack1[stack1Id]-2; // reduce the values in the stack.
                                                         }
                                                     }
-                                                    presentStates[HoleLeftPoint].h =0; // update the hole information to 0
-                                                    presentStates[HoleLeftPoint].time = min(presentStates[HoleLeftPoint].time + right, a.max_const);
+                                                    //presentStates[HoleLeftPoint-1].h =0; // update the hole information to 0
+                                                    presentStates[HoleLeftPoint-1].time = newTime;//min(presentStates[HoleLeftPoint].time + right, a.max_const);
                                                     //add the after pop state to the end of this list of states and make sure you check the othe stack contents.
-                                                    if(!MultiIt.Stack1.empty() && MultiIt.currStates.size()-1 == MultiIt.Stack1.back()){
+                                                    presentStates[presentStates.size()-1]=AfterPopState;
+                                                    /* if(!MultiIt.Stack1.empty() && MultiIt.currStates.size()-1 == MultiIt.Stack1.back()){
                                                         
                                                         presentStates.push_back(AfterPopState); // if the last point is the last hole point of some other stack 
                                                     }
                                                     else{
                                                         presentStates[presentStates.size()-1]=AfterPopState; // if the last point is not a last hole point.
-                                                    }
+                                                    } */
                                                     //update the stack info of other thing
                                                     //update the time by adding "right" to the right point of the hole.
                                                     // then update the last point by adding the pop point. and replacing it.
@@ -623,14 +635,14 @@ bool Concatenation::isEmpty(const Automata &a){
                                                 MidState.h = presentStates[HoleLastPoint].h;
                                                 presentStates[HoleLeftPoint].time = left; // update the time in the hole left point.
                                                 presentStates[HoleLastPoint] = MidState; // update the hole last point
-
-                                                if(!MultiIt.Stack1.empty() && MultiIt.currStates.size()-1 == MultiIt.Stack1.back()){
+                                                presentStates[presentStates.size()-1]=AfterPopState;
+                                                /* if(!MultiIt.Stack1.empty() && MultiIt.currStates.size()-1 == MultiIt.Stack1.back()){
                                                         
                                                         presentStates.push_back(AfterPopState); // if the last point is the last hole point of some other stack 
                                                     }
                                                     else{
                                                         presentStates[presentStates.size()-1]=AfterPopState; // if the last point is not a last hole point.
-                                                    }
+                                                    } */
                                                 // here if we are not removing any points replace the current right point by the new one by updating the information.
 
                                                 MultiStack Mc(presentStates,MultiIt.holes,0,true,MultiIt.Stack1,MultiIt.Stack2,MultiI,6,MultiIt.totalTimeLapsed);
@@ -669,8 +681,9 @@ bool Concatenation::isEmpty(const Automata &a){
                                     
                                     ul totalTimeForStack = 0;
                                     for(ul index1 = HoleLastPoint; index1 < MultiIt.currStates.size();index1++){
-                                        totalTimeForStack = min(totalTimeForStack+ MultiIt.currStates[index1].time,a.max_const); // compute total time lapsed.
+                                        totalTimeForStack = totalTimeForStack+ MultiIt.currStates[index1].time; // compute total time lapsed.
                                     }
+                                    totalTimeForStack = min(totalTimeForStack,a.max_const);
                                     for(unsigned long stateIterator = 0; stateIterator < list_of_states.size();stateIterator++){ // loop for all states to get a good states
                                     set<ul> leftBag = D1c(indexOfHoleLeftState,stateIterator); // get the possible value of times
                                     set<ul> rightBag = D1(stateIterator,indexOfHoleRightState).second;
@@ -683,23 +696,27 @@ bool Concatenation::isEmpty(const Automata &a){
                                                 if(indexOfHoleLeftState == stateIterator && left == 0){ // right will retain the information of the time.
                                                     // then we will close the hole.
                                                     //cout << "Closing the Hole of Stack 1 " << endl;
+                                                    ul newTime = min(presentStates[HoleLeftPoint-1].time + presentStates[HoleLeftPoint].time + presentStates[HoleLastPoint].time,a.max_const);
+
                                                     presentStates.erase(presentStates.begin()+HoleLeftPoint); // erasing the stuff.
+                                                    presentStates.erase(presentStates.begin()+HoleLeftPoint);
                                                     vector<ul> newStack2 = MultiIt.Stack2;
                                                     for(auto stack2Id = 0; stack2Id<newStack2.size();stack2Id++){
                                                         if(newStack2[stack2Id]> HoleLeftPoint){
-                                                            newStack2[stack2Id]= MultiIt.Stack2[stack2Id]-1; // reduce the values in the stack.
+                                                            newStack2[stack2Id]= MultiIt.Stack2[stack2Id]-2; // reduce the values in the stack.
                                                         }
                                                     }
-                                                    presentStates[HoleLeftPoint].h =0; // update the hole information to 0
-                                                    presentStates[HoleLeftPoint].time = min(presentStates[HoleLeftPoint].time + right, a.max_const);
+                                                    //presentStates[HoleLeftPoint-1].h =0; // update the hole information to 0
+                                                    presentStates[HoleLeftPoint-1].time = newTime;//min(presentStates[HoleLeftPoint].time + right, a.max_const);
                                                     //add the after pop state to the end of this list of states and make sure you check the othe stack contents.
-                                                    if(!MultiIt.Stack2.empty() && MultiIt.currStates.size()-1 == MultiIt.Stack2.back()){
+                                                    presentStates[presentStates.size()-1]=AfterPopState;
+                                                    /* if(!MultiIt.Stack2.empty() && MultiIt.currStates.size()-1 == MultiIt.Stack2.back()){
                                                         
                                                         presentStates.push_back(AfterPopState); // if the last point is the last hole point of some other stack 
                                                     }
                                                     else{
                                                         presentStates[presentStates.size()-1]=AfterPopState; // if the last point is not a last hole point.
-                                                    }
+                                                    } */
                                                     //update the stack info of other thing
                                                     //update the time by adding "right" to the right point of the hole.
                                                     // then update the last point by adding the pop point. and replacing it.
@@ -748,14 +765,14 @@ bool Concatenation::isEmpty(const Automata &a){
                                                 MidState.h = presentStates[HoleLastPoint].h;
                                                 presentStates[HoleLeftPoint].time = left; // update the time in the hole left point.
                                                 presentStates[HoleLastPoint] = MidState; // update the hole last point
-
-                                                if(!MultiIt.Stack2.empty() && MultiIt.currStates.size()-1 == MultiIt.Stack2.back()){
+                                                presentStates[presentStates.size()-1]=AfterPopState;
+                                                /* if(!MultiIt.Stack2.empty() && MultiIt.currStates.size()-1 == MultiIt.Stack2.back()){
                                                         
                                                         presentStates.push_back(AfterPopState); // if the last point is the last hole point of some other stack 
                                                     }
                                                     else{
                                                         presentStates[presentStates.size()-1]=AfterPopState; // if the last point is not a last hole point.
-                                                    }
+                                                    } */
                                                 // here if we are not removing any points replace the current right point by the new one by updating the information.
 
                                                 MultiStack Mc(presentStates,MultiIt.holes,0,true,MultiIt.Stack1,MultiIt.Stack2,MultiI,4,MultiIt.totalTimeLapsed);
@@ -970,11 +987,11 @@ vector <vector<State> > MultiStack::addHoleStack1( const Concatenation &Con, con
 
     //cout << "In addHoleStack1" << endl;
     
-    bool flag= false;
+   /*  bool flag= false;
     if(!Stack2.empty()){ // get the right side of other hole
         if(currStates.size()-1==Stack2[Stack2.size()-1])
             flag = true; // this means we need to add a new state before we can add new hole.
-    }   
+    }  */  
     unsigned long lastStateIndex = Con.state_map.at(toString(currStates[currStates.size()-1].state))-1;//get the last state of the list 
     vector< vector<State> > returnVector; // create a return vector which will contain all possible states to return.
     for(unsigned long i = 0; i<Con.list_of_states.size(); i++){ // loop for all the states to check which one will satisfy the hole stack requirement.
@@ -983,23 +1000,23 @@ vector <vector<State> > MultiStack::addHoleStack1( const Concatenation &Con, con
                     for(auto it: bag){ // for all time elapses in the push closure,
                         
                             vector<State> possibilities = currStates;//copy a dummy state from the existing state.
-                            if(flag){
-                            possibilities[possibilities.size()-1].time = 0; // assign the timelapse
+                           /*  if(flag){ */
+                            possibilities[possibilities.size()-1].time = it; // assign the timelapse
                             //possibilities[possibilities.size()-1].h = 0;
                             //possibilities[possibilities.size()-1].stackSymbol = stackSymbol; // because it is a hole of stack 1
                             State AfterPopState; // create the next possible state in the sequence
-                            AfterPopState.state = possibilities[possibilities.size()-1].state;
-                            AfterPopState.time = it;
+                            AfterPopState.state = Con.list_of_states[i];// possibilities[possibilities.size()-1].state;
+                            AfterPopState.time = 0;
                             AfterPopState.h = 0;
                             possibilities.push_back(AfterPopState);
-                            AfterPopState.state = Con.list_of_states[i]; // assigne the values of the next possible state
+                            /* AfterPopState.state = Con.list_of_states[i]; // assigne the values of the next possible state
                             //cout << toString(AfterPopState.s) <<endl;
-                            AfterPopState.time = 0; // the time lapse is negetive because this is now the next end state
+                            AfterPopState.time = 0; // the time lapse is negetive because this is now the next end state */
                             AfterPopState.h = 1;
                             //AfterPopState.stackSymbol = -1; // clearly for the last state the stack symbol should be negetive.
                             possibilities.push_back(AfterPopState); // now push_back the state to the vector.
                             returnVector.push_back(possibilities); // 
-                            }
+                          /*   }
                             else{
                             possibilities[possibilities.size()-1].time = it; // assign the timelapse
                             possibilities[possibilities.size()-1].h = 0;
@@ -1012,7 +1029,7 @@ vector <vector<State> > MultiStack::addHoleStack1( const Concatenation &Con, con
                             //AfterPopState.stackSymbol = -1; // clearly for the last state the stack symbol should be negetive.
                             possibilities.push_back(AfterPopState); // now push_back the state to the vector.
                             returnVector.push_back(possibilities); // 
-                            }
+                            } */
                         
                         
                     }
@@ -1027,11 +1044,11 @@ vector <vector<State> > MultiStack::addHoleStack1( const Concatenation &Con, con
 
 vector <vector<State> > MultiStack::addHoleStack2( const Concatenation &Con, const Automata &a){ // this function adds a hole of stack1 after the given run.
 
-    bool flag= false;
+    /* bool flag= false;
     if(!Stack1.empty()){ // get the right side of other hole
         if(currStates.size()-1==Stack1[Stack1.size()-1])
             flag = true; // this means we need to add a new state before we can add new hole.
-    }   
+    }   */ 
     unsigned long lastStateIndex = Con.state_map.at(toString(currStates[currStates.size()-1].state))-1;//get the last state of the list 
     vector< vector<State> > returnVector; // create a return vector which will contain all possible states to return.
     for(unsigned long i = 0; i<Con.list_of_states.size(); i++){ // loop for all the states to check which one will satisfy the hole stack requirement.
@@ -1040,23 +1057,23 @@ vector <vector<State> > MultiStack::addHoleStack2( const Concatenation &Con, con
                     for(auto it: bag){ // for all time elapses in the push closure,
                         
                             vector<State> possibilities = currStates;//copy a dummy state from the existing state.
-                            if(flag){
-                            possibilities[possibilities.size()-1].time = 0; // assign the timelapse
+                            /* if(flag){ */
+                            possibilities[possibilities.size()-1].time = it; // assign the timelapse
                             //possibilities[possibilities.size()-1].h = 0;
                             //possibilities[possibilities.size()-1].stackSymbol = stackSymbol; // because it is a hole of stack 1
                             State AfterPopState; // create the next possible state in the sequence
-                            AfterPopState.state = possibilities[possibilities.size()-1].state;
-                            AfterPopState.time = it;
+                            AfterPopState.state = Con.list_of_states[i];// possibilities[possibilities.size()-1].state;
+                            AfterPopState.time = 0;
                             AfterPopState.h = 0;
                             possibilities.push_back(AfterPopState);
-                            AfterPopState.state = Con.list_of_states[i]; // assigne the values of the next possible state
+                            /* AfterPopState.state = Con.list_of_states[i]; // assigne the values of the next possible state
                             //cout << toString(AfterPopState.s) <<endl;
-                            AfterPopState.time = 0; // the time lapse is negetive because this is now the next end state
+                            AfterPopState.time = 0;  */// the time lapse is negetive because this is now the next end state
                             AfterPopState.h = 2;
                             //AfterPopState.stackSymbol = -1; // clearly for the last state the stack symbol should be negetive.
                             possibilities.push_back(AfterPopState); // now push_back the state to the vector.
                             returnVector.push_back(possibilities); // 
-                            }
+                           /*  }
                             else{
                             possibilities[possibilities.size()-1].time = it; // assign the timelapse
                             possibilities[possibilities.size()-1].h = 0;
@@ -1069,7 +1086,7 @@ vector <vector<State> > MultiStack::addHoleStack2( const Concatenation &Con, con
                             //AfterPopState.stackSymbol = -1; // clearly for the last state the stack symbol should be negetive.
                             possibilities.push_back(AfterPopState); // now push_back the state to the vector.
                             returnVector.push_back(possibilities); // 
-                            }
+                            } */
                         
                         
                     }
@@ -1155,15 +1172,15 @@ int Concatenation::printWitness2(unsigned long i,unsigned long j, const Automata
     cout <<"There exists an accepting run of the system as follows:" << endl;
     set<unsigned long> times = C(i, j); // get the set of times
     if(times.empty() ) { cout << "Empty" << endl;}
-    cout <<"The size of the satisfying number is " << times.size() << endl;
+    //cout <<"The size of the satisfying number is " << times.size() << endl;
     vector<run> returnstring ;
     for (auto times_it = times.begin(); times_it != times.end(); ++times_it) { // loop for all possible time lapses
-        cout <<"The time from start to final is : " << *times_it << endl;
+        //cout <<"The time from start to final is : " << *times_it << endl;
         //printC();
         returnstring = Witness2(i, *times_it, j, a); // call the witness for the time lapse.
-        cout << "The length of run " << returnstring.size() << endl;
-        cout << "The source state is " << toString(list_of_states[i]) << endl; // print the source state
-        cout << "The destination state is " << toString(list_of_states[j]) << endl; // print the destination state
+        //cout << "The length of run " << returnstring.size() << endl;
+        //cout << "The source state is " << toString(list_of_states[i]) << endl; // print the source state
+        //cout << "The destination state is " << toString(list_of_states[j]) << endl; // print the destination state
         //cout <<"The sequence of Transitions and time lapses is :" << endl;
         cout << endl;
         if(!returnstring.empty()){
@@ -1196,6 +1213,7 @@ int Concatenation::printRun(vector<run> runVector,const Automata& a) {
                 if(time > 0){
                     cout << "TL(" << time <<") ";
                 }
+                if(!a.transition_list[(*it).first].name.empty())
                 cout << a.transition_list[(*it).first].name << " " ;
                 length++;
                 time =0;
@@ -1206,7 +1224,9 @@ int Concatenation::printRun(vector<run> runVector,const Automata& a) {
         }
         cout << endl;
         cout << endl;
-        cout <<"Witness Length " << length << endl;
+        /* cout << endl;
+        cout << endl;
+        cout <<"Witness Length " << length << endl; */
         
         return 0;
     }
@@ -1217,11 +1237,14 @@ int Concatenation::printRun(vector<run> runVector,const Automata& a) {
 }
 
 
-
-
 vector<run> Concatenation::getPath2(unsigned long index1,unsigned long index2, const Automata& a,unordered_map<string,int> &loop,unordered_map<string,int> &loop2) { // this function gets path for useless reset
     // indices are the state valuation pair indices
     vector<run> list_of_transitions; // initially empty
+    /* if(index1 == index2){ //if the calling index is equal to the destination index then we will return a zero false pair
+        list_of_transitions.push_back(make_pair(0,false)); // path from same thing to same thing should be non empty.
+        return list_of_transitions;
+    } */
+    //vector<run> list_of_transitions; // initially empty
     ul stateIndex1 = list_of_states[index1].first;
     ul stateIndex2 = list_of_states[index2].first;
     vector<ul> valuationIndex1 = list_of_states[index1].second;
@@ -1255,9 +1278,126 @@ vector<run> Concatenation::getPath2(unsigned long index1,unsigned long index2, c
                         list_of_transitions.push_back(make_pair(transition_it,true));
                     //recursion
                         vector<run> next_sequence = getPath2(mid_dest_id,index2,a,loop,loop2);
-                       
-                        list_of_transitions.insert(list_of_transitions.end(),next_sequence.begin(),next_sequence.end());
-                        return list_of_transitions;
+                       if(!next_sequence.empty()){
+                           
+                            list_of_transitions.insert(list_of_transitions.end(),next_sequence.begin(),next_sequence.end());
+                            /* printRun(list_of_transitions,a); */
+                            return list_of_transitions;
+                       }
+                    }
+                    
+                }
+
+            
+        }
+    }
+    for(ul left_transition_id = 0; left_transition_id < a.number_of_transitions; left_transition_id++){
+        int length = 4000;
+        vector<run> backup;
+        if(a.transition_list[left_transition_id].stackOp.op==1 && a.transition_list[left_transition_id].firable(list_of_states[index1]) ){
+            vector<unsigned long> usefulreset = usefulReset(valuationIndex1,a.transition_list[left_transition_id].reset_vector);
+            if(usefulreset.empty()&& a.transition_list[left_transition_id].firable(make_pair(stateIndex1,
+                                                                                              valuationIndex1))){
+                ul stack_push = a.transition_list[left_transition_id].stackOp.stack_push;
+                ul stack_alphabet_push = a.transition_list[left_transition_id].stackOp.stack_alphabet_push;
+                ul left_start_state = a.transition_list[left_transition_id].source_state-1;
+                states left_start = make_pair(left_start_state,valuationIndex1);
+                ul left_start_id = state_map[toString(left_start)]-1;
+                ul left_destination_state = a.transition_list[left_transition_id].destination_state-1;
+                states left_destination = make_pair(left_destination_state,valuationIndex1);
+                ul left_id = state_map[toString(left_destination)]-1;
+                for(ul right_transition_id = 0; right_transition_id<a.number_of_transitions;right_transition_id++){
+                    if( a.transition_list[right_transition_id].stackOp.op==2 && a.transition_list[right_transition_id].stackOp.stack_pop == stack_push && a.transition_list[right_transition_id].stackOp.stack_alphabet_pop == stack_alphabet_push){
+                        ul right_dest_state = a.transition_list[right_transition_id].destination_state-1 ;
+                        states right_dest = make_pair(right_dest_state,valuationIndex1);
+                        ul right_dest_id = state_map[toString(right_dest)]-1;
+                        ul right_start_state = a.transition_list[right_transition_id].source_state-1;
+                        states right_start = make_pair(right_start_state,valuationIndex1);
+                        ul right_id = state_map[toString(right_start)]-1;
+                        vector<unsigned long> usefulreset2 = usefulReset(valuationIndex1,a.transition_list[right_transition_id].reset_vector);
+                        ostringstream os1,os2,os3;
+                        os1<< left_id<< "|" << right_id ;
+                        string pair1 = os1.str();
+                        os2<<right_dest_id <<"|" << index2 ;
+                        string pair2 = os2.str();
+                        os3 << index1 << "|" << left_start_id;
+                        string pair3 = os3.str();
+                        if( !C(left_id,right_id).empty()&&!C(right_dest_id,index2).empty() && usefulreset2.empty() && (left_id != index1 || right_id != index2) && !C(right_dest_id,index2).empty() && loop2[pair1]!=1 && loop2[pair2]!=1){
+                            loop2[pair1]=1;
+                            loop2[pair2]=1;
+                            
+                           
+                            vector<run> list_of_transitions2 = getPath2(left_id,right_id,a,loop,loop2);
+                            vector<run> list_of_transitions3 = getPath2(right_dest_id,index2,a,loop,loop2);
+                            if(!list_of_transitions2.empty() && !list_of_transitions3.empty()){
+                                
+                                list_of_transitions.push_back(make_pair(left_transition_id,true));
+                                list_of_transitions.insert(list_of_transitions.end(),list_of_transitions2.begin(),list_of_transitions2.end());
+                                list_of_transitions.push_back(make_pair(right_transition_id,true));
+                                list_of_transitions.insert(list_of_transitions.end(),list_of_transitions3.begin(),list_of_transitions3.end());
+                                return list_of_transitions;
+                            }
+                            
+                        }
+                    }
+                }
+
+            }
+            
+        }
+    }
+    //cout << "This should not happen! " << "index1: " << index1 << "index2: " << index2 << endl;
+return list_of_transitions;
+}
+
+
+vector<run> Concatenation::getPath3(unsigned long index1,unsigned long index2, const Automata& a,unordered_map<string,int> &loop,unordered_map<string,int> &loop2) { // this function gets path for useless reset
+    // indices are the state valuation pair indices
+    vector<run> list_of_transitions; // initially empty
+    /* if(index1 == index2){ //if the calling index is equal to the destination index then we will return a zero false pair
+        list_of_transitions.push_back(make_pair(0,false)); // path from same thing to same thing should be non empty.
+        return list_of_transitions;
+    } */
+    //vector<run> list_of_transitions; // initially empty
+    ul stateIndex1 = list_of_states[index1].first;
+    ul stateIndex2 = list_of_states[index2].first;
+    vector<ul> valuationIndex1 = list_of_states[index1].second;
+    vector<ul> valuationIndex2 = list_of_states[index2].second;
+    if(valuationIndex1 != valuationIndex2){
+        cout <<"The valuations are not same so can't progress" << endl;
+        list_of_transitions.push_back(make_pair(0,false));
+        return list_of_transitions;
+    }
+    if(stateIndex1 == stateIndex2){ //if the calling index is equal to the destination index then we will return a zero false pair
+        list_of_transitions.push_back(make_pair(0,false)); // path from same thing to same thing should be non empty.
+        return list_of_transitions;
+    }
+    for(unsigned long transition_it=0;transition_it<a.transition_list.size();transition_it++){ // iterating throught the transition list
+        if(a.transition_list[transition_it].stackOp.op ==0 && a.transition_list[transition_it].source_state != a.transition_list[transition_it].destination_state) { // this will only take care of the transitions without any stack operations.
+            
+                vector<unsigned long> usefulreset = usefulReset(valuationIndex1,
+                                                      a.transition_list[transition_it].reset_vector);// get list of useful reset between the newly reached valuation and the previous valuation
+                if (usefulreset.empty() && a.transition_list[transition_it].firable(make_pair(stateIndex1,
+                                                                                              valuationIndex1))) { // if there is no useful reset and the transition if firable then only we can do the following things.\
+                    //we may have to add an emptiness chekcing here.
+                    ul mid_dest = a.transition_list[transition_it].destination_state-1;
+                    states mid_dest_s = make_pair(mid_dest,valuationIndex1);
+                    ul mid_dest_id = state_map[toString(mid_dest_s)]-1;
+                    //cout << toString(mid_dest_s) << " " << toString(list_of_states[index2]) << endl;
+                    ostringstream os;
+                    os<< mid_dest_id << "|"<<transition_it<<"|" << index2 ;
+                    string pair = os.str();
+                    if(!C(mid_dest_id,index2).empty() && loop[pair]!=1){
+                        loop[pair]=1;
+                        list_of_transitions.push_back(make_pair(transition_it,true));
+                    //recursion
+                        vector<run> next_sequence = getPath2(mid_dest_id,index2,a,loop,loop2);
+                       if(!next_sequence.empty()){
+                           
+                            list_of_transitions.insert(list_of_transitions.end(),next_sequence.begin(),next_sequence.end());
+                            printRun(list_of_transitions,a);
+                            return list_of_transitions;
+                       }
                     }
                     
                 }
@@ -1271,6 +1411,9 @@ vector<run> Concatenation::getPath2(unsigned long index1,unsigned long index2, c
             if(usefulreset.empty()){
                 ul stack_push = a.transition_list[left_transition_id].stackOp.stack_push;
                 ul stack_alphabet_push = a.transition_list[left_transition_id].stackOp.stack_alphabet_push;
+                ul left_start_state = a.transition_list[left_transition_id].source_state-1;
+                states left_start = make_pair(left_start_state,valuationIndex1);
+                ul left_start_id = state_map[toString(left_start)]-1;
                 ul left_destination_state = a.transition_list[left_transition_id].destination_state-1;
                 states left_destination = make_pair(left_destination_state,valuationIndex1);
                 ul left_id = state_map[toString(left_destination)]-1;
@@ -1283,21 +1426,30 @@ vector<run> Concatenation::getPath2(unsigned long index1,unsigned long index2, c
                         states right_start = make_pair(right_start_state,valuationIndex1);
                         ul right_id = state_map[toString(right_start)]-1;
                         vector<unsigned long> usefulreset2 = usefulReset(valuationIndex1,a.transition_list[right_transition_id].reset_vector);
-                        ostringstream os1,os2;
+                        ostringstream os1,os2,os3;
                         os1<< left_id<< "|" << right_id ;
                         string pair1 = os1.str();
                         os2<<right_dest_id <<"|" << index2 ;
                         string pair2 = os2.str();
-                        if(!C(left_id,right_id).empty() && usefulreset2.empty() && (left_id != index1 || right_id != index2) && !C(right_dest_id,index2).empty() && loop2[pair1]!=1 && loop2[pair2]!=1){
+                        os3 << index1 << "|" << left_start_id;
+                        string pair3 = os3.str();
+                        if( !C(left_id,right_id).empty()&&!C(right_dest_id,index2).empty() && usefulreset2.empty() && (left_id != index1 || right_id != index2) && !C(right_dest_id,index2).empty() && loop2[pair1]!=1 && loop2[pair2]!=1){
                             loop2[pair1]=1;
                             loop2[pair2]=1;
+                            
+                           
                             vector<run> list_of_transitions2 = getPath2(left_id,right_id,a,loop,loop2);
                             vector<run> list_of_transitions3 = getPath2(right_dest_id,index2,a,loop,loop2);
-                            list_of_transitions.push_back(make_pair(left_transition_id,true));
-                            list_of_transitions.insert(list_of_transitions.end(),list_of_transitions2.begin(),list_of_transitions2.end());
-                            list_of_transitions.push_back(make_pair(right_transition_id,true));
-                            list_of_transitions.insert(list_of_transitions.end(),list_of_transitions3.begin(),list_of_transitions3.end());
-                            return list_of_transitions;
+                            if(!list_of_transitions2.empty() && !list_of_transitions3.empty()){
+                                
+                                list_of_transitions.push_back(make_pair(left_transition_id,true));
+                                list_of_transitions.insert(list_of_transitions.end(),list_of_transitions2.begin(),list_of_transitions2.end());
+                                list_of_transitions.push_back(make_pair(right_transition_id,true));
+                                list_of_transitions.insert(list_of_transitions.end(),list_of_transitions3.begin(),list_of_transitions3.end());
+                                printRun(list_of_transitions,a);
+                                return list_of_transitions;
+                            }
+                            
                         }
                     }
                 }
@@ -1316,13 +1468,16 @@ vector<run> Concatenation::Witness2(unsigned long index1, unsigned long time ,un
    /*  cout << "CALLING WITNESS 2 Again" << endl;
     cout << "Index1: " << index1 << " time: " << time << "Index2: " << index2 << endl; */
     vector<run> empty;
-    /* if(time == 0){
-    empty = getPath2(index1,index2,a);
-    
+    if(time == 0){
+         unordered_map<string,int> loop;
+            unordered_map<string,int> loop2;
+    empty = getPath2(index1,index2,a,loop,loop2);
+    /* cout << "Test" << endl;
+    printRun(empty,a); */
     if(!empty.empty()){
         return empty;
     }
-    } */
+    }
     //ul total_elapsed_time = 0; // we need to make sure we elapse the time amount of time in this function
     for(unsigned long s = 0 ; s < a.number_of_states ; s++) { // guess middle state
 
